@@ -1,172 +1,291 @@
-/* =========================================================
-   THIẾT LẬP CƠ BẢN VÀ FONT CHỮ
-========================================================= */
+/* =========================================
+   1. RESET & VARIABLES
+========================================= */
 :root {
-    --text-dark: #4a3b32; /* Chỉnh lại mã màu nâu/đen theo thiết kế thực tế của bạn */
-    --text-light: #ffffff;
-    --spacing-section: 80px;
+    --text-color: #5A473D; /* Màu nâu đặc trưng của thiết kế */
+    --line-color: #C1A28A; /* Màu của các đường timeline ngang/dọc */
+    --box-bg: #B58C66; /* Màu nền của các box hình ảnh placeholder */
 }
 
-/* Khai báo font chữ Beautique Display cho các thẻ heading phụ nếu không dùng SVG */
 @font-face {
     font-family: 'Beautique Display';
-    src: url('fonts/BeautiqueDisplay-Regular.woff2') format('woff2'), /* Đảm bảo bạn có thư mục fonts/ */
-         url('fonts/BeautiqueDisplay-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    src: url('fonts/BeautiqueDisplay-Regular.woff2') format('woff2');
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    /* Set font Manrope làm mặc định cho các văn bản dài */
     font-family: 'Manrope', sans-serif;
-    color: var(--text-dark);
+    color: var(--text-color);
     line-height: 1.6;
-    font-size: 16px;
+    background-color: #f7f4ef;
+    overflow-x: hidden;
 }
 
-/* =========================================================
-   LAYOUT & BACKGROUNDS
-========================================================= */
-.container {
-    max-width: 1200px; /* Độ rộng tiêu chuẩn cho nội dung */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Gắn nền giấy/texture (back.jpg) cho toàn bộ các section đầu */
-.main-background {
-    background-image: url('image/back.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-attachment: scroll; /* hoặc 'fixed' nếu bạn muốn hiệu ứng parallax */
-}
-
-.section-padding {
-    padding: var(--spacing-section) 0;
-}
-
-/* =========================================================
-   HEADER & LOGOS
-========================================================= */
-header {
-    padding: 30px 0;
-}
-
-.header-logos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-school {
-    height: 60px; /* Điều chỉnh kích thước logo MTCN */
-}
-
-.logo-brand {
-    height: 70px; /* Điều chỉnh kích thước logo Nếp Làng */
-}
-
-/* =========================================================
-   TYPOGRAPHY (SVG Titles & Headings)
-========================================================= */
-.title-wrapper {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.svg-title {
+/* KHÓA KÍCH THƯỚC TRÁNH VỠ LAYOUT */
+img, svg {
     max-width: 100%;
     height: auto;
-    /* Bạn có thể fix width cụ thể ví dụ: width: 450px; để chuẩn với Figma */
+    display: block;
 }
 
-.beautique-heading {
+.font-beautique {
     font-family: 'Beautique Display', serif;
-    font-size: 2rem;
     font-weight: normal;
-    margin-bottom: 10px;
 }
 
-.content-box {
-    max-width: 800px;
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-40 { margin-bottom: 40px; }
+
+/* Background chung toàn trang */
+.site-wrapper {
+    background-image: url('image/back.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1300px;
     margin: 0 auto;
-    text-align: center;
-    font-weight: 400; /* Font Manrope ở chế độ Regular */
+    padding: 0 40px;
 }
 
-/* =========================================================
-   SECTION 2: LƯỚI ICON NÓN LÁ CÁCH ĐIỆU
-========================================================= */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 50px;
+.section { padding: 80px 0; }
+
+/* Box placeholder cho hình ảnh (dùng tạm khi chưa có ảnh thật) */
+.img-placeholder, .img-box-placeholder {
+    background-color: var(--box-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-weight: 600;
+    border-radius: 8px;
 }
 
-.feature-item {
+/* =========================================
+   2. HEADER & HERO SECTION
+========================================= */
+.top-nav {
+    position: absolute; /* Đặt logo ở góc trên trái như thiết kế */
+    top: 30px;
+    left: 40px;
     display: flex;
     align-items: flex-start;
-    gap: 15px;
+    gap: 20px;
+    z-index: 10;
 }
+.nav-logo-brand { height: 80px; }
+.nav-logo-school { height: 50px; }
 
-.nla-icon {
-    width: 45px; /* Kích thước cho icon nón lá .svg */
-    flex-shrink: 0;
-    margin-top: 5px;
-}
-
-/* =========================================================
-   SECTION 6 & 7: NỀN ẢNH TỐI & LOGO TRẮNG (logo2.png)
-========================================================= */
-.dark-section {
-    position: relative;
-    padding: 120px 0;
-    background-size: cover;
-    background-position: center;
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
-
-/* Lớp phủ đen trong suốt để text và logo trắng nổi bật hơn */
-.dark-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4); 
+.hero-main-title {
+    font-size: 8rem;
+    line-height: 0.9;
+    letter-spacing: -2px;
 }
+.hero-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.hero-desc { font-size: 1rem; letter-spacing: 2px; }
 
-.relative-z {
+/* =========================================
+   3. SECTION 2: TIMELINE LỊCH SỬ
+========================================= */
+.split-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+.svg-title { max-height: 180px; } /* Giới hạn độ cao SVG */
+
+/* Horizontal Timeline */
+.horizontal-timeline {
+    position: relative;
+    padding-top: 40px;
+}
+.timeline-line {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--line-color);
+    z-index: 1;
+}
+.timeline-nodes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
     position: relative;
     z-index: 2;
 }
+.node { text-align: center; }
+.node-icon {
+    height: 35px;
+    margin: 0 auto 20px auto;
+    background-color: transparent; /* Nếu bạn muốn che đường kẻ thì dùng màu nền của trang */
+}
+.node h4 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+.node-year {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.node p { font-size: 0.9rem; }
 
-.logo-white {
-    max-width: 200px; /* Cân đối kích thước logo2.png */
-    height: auto;
+/* =========================================
+   4. SECTION 3: QUY TRÌNH (Timeline Dọc)
+========================================= */
+.process-layout {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    gap: 80px;
+}
+.quote {
+    font-size: 2rem;
+    margin: 30px 0;
 }
 
-.logo-school-white {
-    height: 50px;
-    /* Mẹo CSS biến logo màu thành logo trắng tinh nếu bản gốc có màu */
-    filter: brightness(0) invert(1); 
+/* Vertical Curved Timeline */
+.vertical-timeline {
+    position: relative;
+    padding-left: 50px;
 }
-
-.text-white {
-    color: var(--text-light) !important;
+/* Tạo đường line cong cong mờ ảo bằng thẻ giả v-line */
+.v-line {
+    position: absolute;
+    top: 20px; bottom: 20px; left: 25px;
+    width: 60px;
+    border-left: 2px solid var(--line-color);
+    border-radius: 50% 0 0 50%;
+    z-index: 1;
 }
-
-.mt-20 {
-    margin-top: 20px;
-}
-
-.flex-center-col {
+.v-step {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
     display: flex;
-    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+}
+.v-num {
+    width: 50px; height: 50px;
+    background-color: var(--text-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    margin-left: -25px; /* Kéo số lùi về đường viền */
+}
+.v-text h4 { font-size: 1.2rem; margin-bottom: 10px; }
+.v-text ul { padding-left: 15px; font-size: 0.95rem; }
+
+/* =========================================
+   5. SECTION 4: VIDEO YOUTUBE
+========================================= */
+.video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: var(--box-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+/* =========================================
+   6. SECTION 5: CÁC LOẠI NÓN
+========================================= */
+.hat-types-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 60px;
+}
+.hat-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia đôi: Ảnh và Text */
+    gap: 20px;
+    align-items: center;
+}
+.hat-item .img-box {
+    background-color: var(--box-bg);
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+}
+.hat-item .text-box p { font-size: 0.9rem; }
+
+/* =========================================
+   7. SECTION 6 & 7: SPLIT VIEW (Nửa ảnh nửa chữ)
+========================================= */
+.split-view-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+}
+.split-left-content {
+    padding: 80px 10% 80px 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.split-right-img {
+    position: relative;
+    background-color: var(--box-bg);
+}
+.split-right-img .img-placeholder {
+    width: 100%; height: 100%; border-radius: 0;
+}
+/* Đặt logo trong suốt đè lên ảnh mảng lớn bên phải */
+.overlay-logo {
+    position: absolute;
+    bottom: 40px; right: 40px;
+    height: 180px;
+    opacity: 0.2; /* Tùy chỉnh độ mờ của logo */
+}
+.img-box-placeholder {
+    height: 200px;
+    width: 100%;
+}
+
+/* =========================================
+   8. SECTION 8: MASONRY GALLERY GRID
+========================================= */
+.gallery-grid {
+    display: grid;
+    /* Chia 4 cột tỷ lệ bằng nhau */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(250px, auto) minmax(350px, auto);
+    gap: 20px;
+}
+.grid-cell { border-radius: 8px; }
+.text-cell {
+    padding: 20px;
+    font-size: 0.9rem;
+}
+/* Cho khung ảnh 03 dài ra chiếm 3 cột ở hàng dưới */
+.large-span {
+    grid-column: span 3;
 }
