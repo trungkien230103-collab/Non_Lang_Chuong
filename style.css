@@ -118,30 +118,85 @@ img, svg { display: block; max-width: 100%; height: auto; }
 .hero-subtitle { font-size: 1.2rem; letter-spacing: 5px; }
 .hero-desc { font-size: 1rem; letter-spacing: 2px; }
 
-/* Timeline Ngang */
-.split-header {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 40px;
+/* =========================================
+   TIMELINE LỊCH SỬ NGANG (SECTION 2)
+========================================= */
+.horizontal-timeline { position: relative; padding-top: 10px; }
+.timeline-line { 
+    position: absolute; 
+    top: 33px; /* Căn đường line chạm đúng vào mép dưới của icon nón lá */
+    left: 0; 
+    width: 100%; 
+    height: 1.5px; 
+    background-color: var(--line-color); 
+    z-index: 1; 
 }
-.svg-title { max-height: 160px; } /* Khống chế tiêu đề lớn */
-
-.horizontal-timeline { position: relative; padding-top: 20px; }
-.timeline-line { position: absolute; top: 40px; left: 0; width: 100%; height: 2px; background-color: var(--line-color); z-index: 1; }
-.timeline-nodes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; z-index: 2; }
+.timeline-nodes { 
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); /* Đã chuyển thành 5 cột */
+    gap: 25px; 
+    position: relative; 
+    z-index: 2; 
+}
 .node { text-align: center; }
-.node-icon { height: 35px; margin: 0 auto 20px auto; }
-.node h4 { font-size: 1.2rem; margin-bottom: 5px; }
-.node-year { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; }
-.node p { font-size: 0.85rem; }
+.node-icon-wrap { height: 35px; margin-bottom: 25px; }
+.node-icon { 
+    height: 100%; 
+    margin: 0 auto; 
+    position: relative;
+    z-index: 3;
+}
+.node h4 { font-size: 1.05rem; margin-bottom: 8px; line-height: 1.3; }
+.node-year { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; }
+.node p { font-size: 0.75rem; line-height: 1.5; text-align: left; opacity: 0.9; }
 
-/* Quy trình Dọc */
-.process-layout { display: grid; grid-template-columns: 4fr 5fr; gap: 80px; align-items: center; }
-.quote { font-size: 1.8rem; margin: 20px 0; }
-.vertical-timeline { position: relative; padding-left: 50px; }
-.v-line { position: absolute; top: 20px; bottom: 20px; left: 25px; width: 60px; border-left: 2px solid var(--line-color); border-radius: 50% 0 0 50%; z-index: 1; }
-.v-step { position: relative; z-index: 2; margin-bottom: 30px; display: flex; gap: 20px; align-items: flex-start; }
-.v-num { width: 45px; height: 45px; background-color: var(--text-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; margin-left: -22.5px; }
-.v-text h4 { font-size: 1.1rem; margin-bottom: 5px; }
-.v-text ul { padding-left: 15px; font-size: 0.85rem; }
+/* =========================================
+   QUY TRÌNH DỌC CONG (SECTION 3)
+========================================= */
+.process-layout { display: grid; grid-template-columns: 4fr 6fr; gap: 60px; align-items: center; }
+.quote { font-size: 1.7rem; margin: 20px 0; line-height: 1.4; }
+
+.vertical-timeline { position: relative; padding-left: 60px; }
+/* Tạo cung tròn mỏng hướng sang trái */
+.v-line { 
+    position: absolute; 
+    top: 25px; bottom: 40px; 
+    left: 20px; 
+    width: 50px; 
+    border-left: 1.5px solid var(--line-color); 
+    border-top-left-radius: 100%; 
+    border-bottom-left-radius: 100%; 
+    z-index: 1; 
+}
+.v-step { 
+    position: relative; 
+    z-index: 2; 
+    margin-bottom: 30px; 
+    display: flex; 
+    gap: 20px; 
+    align-items: flex-start; 
+}
+/* Căn chỉnh các khối số bám theo độ cong của v-line */
+.step-1 .v-num { transform: translateX(25px); } /* Nằm lệch phải ở đỉnh cong */
+.step-2 .v-num { transform: translateX(5px); }  /* Lùi dần sang trái */
+.step-3 .v-num { transform: translateX(5px); }  /* Lùi dần sang trái */
+.step-4 .v-num { transform: translateX(25px); } /* Quay lại lệch phải ở đáy cong */
+
+.v-num { 
+    width: 45px; height: 45px; 
+    background-color: var(--text-color); 
+    color: white; 
+    border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 1.6rem; 
+    flex-shrink: 0; 
+}
+.v-text {
+    padding-top: 5px;
+}
+.v-text h4 { font-size: 1.05rem; margin-bottom: 5px; }
+.v-text ul { padding-left: 15px; font-size: 0.8rem; line-height: 1.5; opacity: 0.9; }
+.v-text li { margin-bottom: 8px; }
 
 /* Video Box */
 .video-placeholder { width: 80%; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--box-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
