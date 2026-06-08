@@ -151,52 +151,67 @@ img, svg { display: block; max-width: 100%; height: auto; }
 .node p { font-size: 0.75rem; line-height: 1.5; text-align: left; opacity: 0.9; }
 
 /* =========================================
-   QUY TRÌNH DỌC CONG (SECTION 3)
+   QUY TRÌNH DỌC CONG (SECTION 3) - CỐ ĐỊNH
 ========================================= */
-.process-layout { display: grid; grid-template-columns: 4fr 6fr; gap: 60px; align-items: center; }
-.quote { font-size: 1.7rem; margin: 20px 0; line-height: 1.4; }
+.process-right {
+    position: relative;
+    padding-left: 80px;
+    height: 600px; /* Cố định chiều cao để đường cong ổn định */
+}
 
-.vertical-timeline { position: relative; padding-left: 60px; }
-/* Tạo cung tròn mỏng hướng sang trái */
-.v-line { 
-    position: absolute; 
-    top: 25px; bottom: 40px; 
-    left: 20px; 
-    width: 50px; 
-    border-left: 1.5px solid var(--line-color); 
-    border-top-left-radius: 100%; 
-    border-bottom-left-radius: 100%; 
-    z-index: 1; 
+.vertical-timeline {
+    position: relative;
+    height: 100%;
 }
-.v-step { 
-    position: relative; 
-    z-index: 2; 
-    margin-bottom: 30px; 
-    display: flex; 
-    gap: 20px; 
-    align-items: flex-start; 
-}
-/* Căn chỉnh các khối số bám theo độ cong của v-line */
-.step-1 .v-num { transform: translateX(25px); } /* Nằm lệch phải ở đỉnh cong */
-.step-2 .v-num { transform: translateX(5px); }  /* Lùi dần sang trái */
-.step-3 .v-num { transform: translateX(5px); }  /* Lùi dần sang trái */
-.step-4 .v-num { transform: translateX(25px); } /* Quay lại lệch phải ở đáy cong */
 
-.v-num { 
-    width: 45px; height: 45px; 
-    background-color: var(--text-color); 
-    color: white; 
-    border-radius: 50%; 
-    display: flex; align-items: center; justify-content: center; 
-    font-size: 1.6rem; 
-    flex-shrink: 0; 
+/* Đường cong SVG hoặc CSS Line */
+.v-line {
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    left: 20px;
+    width: 60px;
+    border-left: 2px solid var(--line-color);
+    border-top-left-radius: 50% 100px;
+    border-bottom-left-radius: 50% 100px;
+    z-index: 1;
 }
+
+/* Các bước (1, 2, 3, 4) đặt theo vị trí tuyệt đối */
+.v-step {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Căn vị trí cụ thể cho từng bước để tạo độ cong */
+.step-1 { top: 60px; left: -20px; }
+.step-2 { top: 200px; left: -40px; }
+.step-3 { top: 340px; left: -40px; }
+.step-4 { top: 480px; left: -20px; }
+
+.v-num {
+    width: 50px; height: 50px;
+    background-color: var(--text-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    z-index: 2;
+    box-shadow: 0 0 0 5px #f7f4ef; /* Tạo viền giả để trông tách biệt với đường cong */
+}
+
 .v-text {
+    flex: 1;
     padding-top: 5px;
 }
-.v-text h4 { font-size: 1.05rem; margin-bottom: 5px; }
-.v-text ul { padding-left: 15px; font-size: 0.8rem; line-height: 1.5; opacity: 0.9; }
-.v-text li { margin-bottom: 8px; }
+.v-text h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.v-text ul { padding-left: 15px; font-size: 0.85rem; line-height: 1.5; opacity: 0.9; }
 
 /* Video Box */
 .video-placeholder { width: 80%; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--box-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
