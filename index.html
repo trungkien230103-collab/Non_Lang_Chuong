@@ -3,171 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nếp Làng - Không Gian Triển Lãm Nón Làng Chuông</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nếp Làng - Đồ án Không gian Triển lãm Nón Làng Chuông</title>
+    <!-- Import Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables cho hệ màu Giấy Dó & Gỗ */
+        :root {
+            --bg-color: #f4efeb; /* Màu giấy dó / là lụi */
+            --text-main: #4a3831; /* Nâu gỗ đậm */
+            --text-accent: #a67c52; /* Nâu nhạt / vàng tre */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --font-script: 'Great Vibes', cursive;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+        }
+
+        /* Khung chờ Ảnh (Image Placeholders) */
+        .img-placeholder {
+            background-color: #d1c5b8;
+            border: 1px dashed #a67c52;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .img-placeholder:hover {
+            background-color: #c4b5a5;
+        }
+
+        /* HEADER CỐ ĐỊNH */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(244, 239, 235, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(166, 124, 82, 0.2);
+        }
+
+        .header .logo {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header .uni-info {
+            text-align: right;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* Khung bọc các Section */
+        section {
+            min-height: 100vh;
+            padding: 120px 10vw 80px 10vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(166, 124, 82, 0.1);
+        }
+
+        /* Bố cục trang bìa (Section 1) */
+        .cover-section {
+            text-align: center;
+            align-items: center;
+        }
+        .cover-section h1 {
+            font-size: 8vw;
+            letter-spacing: 5px;
+            color: var(--text-accent);
+            margin-bottom: 20px;
+        }
+        .cover-section h2 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .cover-section p {
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: var(--font-serif);
+        }
+
+        /* Section 2: Lịch sử (Timeline Grid) */
+        .history-intro {
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+        .history-intro h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-accent);
+        }
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            align-items: start;
+        }
+        .timeline-item h3 {
+            font-size: 2rem;
+            color: var(--text-accent);
+            border-bottom: 2px solid var(--text-accent);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .timeline-item h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            min-height: 45px;
+        }
+        .timeline-item p {
+            font-size: 0.85rem;
+            text-align: justify;
+        }
+
+        /* Section 3: Linh hồn làng nghề */
+        .soul-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .soul-title {
+            flex: 1;
+            font-family: var(--font-script);
+            font-size: 6rem;
+            line-height: 1;
+            color: var(--text-accent);
+            text-align: right;
+            padding-right: 40px;
+            border-right: 1px solid var(--text-accent);
+        }
+        .soul-content {
+            flex: 1;
+        }
+        .soul-quote {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-accent);
+        }
+        .soul-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Section 4: Quy trình chế tác */
+        .process-section {
+            display: flex;
+            gap: 50px;
+        }
+        .process-steps {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .step-item h3 {
+            font-size: 1.5rem;
+            color: var(--text-accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .step-item h3::before {
+            content: attr(data-step);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--text-accent);
+            color: var(--bg-color);
+            border-radius: 50%;
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .step-item p {
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+        .process-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Section 5: Phân loại (Portfolio) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .portfolio-item {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .portfolio-item .img-placeholder {
+            height: 300px;
+            border-radius: 10px;
+        }
+        .portfolio-item h3 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-accent);
+        }
+        .portfolio-item p {
+            font-size: 0.9rem;
+            text-align: justify;
+        }
+
+        /* Section 6 & 7: Concept & Architecture */
+        .concept-section {
+            position: relative;
+        }
+        .watermark-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            font-size: 20vw;
+            color: rgba(166, 124, 82, 0.05);
+            z-index: -1;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .concept-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        .concept-text {
+            flex: 1;
+        }
+        .concept-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--text-accent);
+            line-height: 1.1;
+        }
+        .concept-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        .concept-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .concept-images .img-placeholder {
+            height: 250px;
+        }
+
+        /* Section 8: Detail Exhibit */
+        .detail-top {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .detail-top .img-placeholder {
+            flex: 2;
+            height: 400px;
+        }
+        .detail-top .text {
+            flex: 1;
+            font-size: 1rem;
+            text-align: justify;
+            align-self: center;
+        }
+        .detail-bottom {
+            display: flex;
+            gap: 30px;
+        }
+        .detail-bottom .img-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .detail-bottom .img-placeholder {
+            height: 250px;
+        }
+
+        /* Responsive Design căn bản */
+        @media (max-width: 900px) {
+            .timeline-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .soul-section, .process-section, .concept-content, .detail-top, .detail-bottom {
+                flex-direction: column;
+            }
+            .soul-title {
+                text-align: center;
+                border-right: none;
+                border-bottom: 1px solid var(--text-accent);
+                padding: 0 0 20px 0;
+            }
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="hero-section">
+    <!-- Header Cố Định -->
+    <header class="header">
+        <div class="logo">Nếp Làng</div>
         <div class="uni-info">
-            <img src="image/logomtcn.png" alt="Đại học Mỹ thuật Công nghiệp" class="logo-uni">
-            <p>ĐẠI HỌC MỸ THUẬT CÔNG NGHIỆP</p>
-            <p>KHOA THIẾT KẾ NỘI NGOẠI THẤT</p>
-        </div>
-        <div class="hero-content">
-            <img src="image/logo2.png" alt="Nếp Làng" class="logo-main-white">
-            <h2>NÓN LÀNG CHUÔNG</h2>
-            <p>KHÔNG GIAN TRIỂN LÃM & TRƯNG BÀY SẢN PHẨM LÀNG NGHỀ</p>
+            Đại học Mỹ thuật Công nghiệp<br>
+            Khoa Thiết kế Nội Ngoại thất
         </div>
     </header>
 
-    <section class="section history-section">
-        <div class="container">
-            <img src="image/title1.svg" class="section-title-img" alt="Lịch sử Làng Chuông">
-            
-            <p class="intro-text">Làng Chuông (tên chữ là xã Phương Trung, thuộc huyện Thanh Oai, Hà Nội) nằm hiền hòa bên dòng sông Đáy. Không chỉ là một ngôi làng cổ mang đậm nét kiến trúc đồng bằng Bắc Bộ, nơi đây còn được mệnh danh là "thủ phủ nón lá" của Việt Nam. Lịch sử của Làng Chuông là một dòng chảy xuyên suốt hơn một thiên niên kỷ, nơi sự biến thiên của thời cuộc luôn gắn liền với sự thăng trầm của nghề đan nón truyền thống.</p>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Năm 791 (Thế kỷ VIII)</h3>
-                    <h4>Hình thành làng và khởi nghề nón</h4>
-                    <p>Làng được lập với tên gọi ban đầu là Trang Thời Trung (hay Trang Thi Trung). Theo các bậc cao niên và ngọc phả để lại, nghề làm nón cũng bắt đầu xuất hiện từ giai đoạn này. Xưa kia, làng chuyên chế tác các loại nón cổ để cung tiến hoàng tộc và phục vụ nhiều tầng lớp: nón ba tầm, nón quai thao cho nữ, nón chóp, nón dấu cho nam giới và quan lại.</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Năm 1848</h3>
-                    <h4>Đổi tên thành Phương Trung</h4>
-                    <p>Vào năm Tự Đức nguyên niên, vì phải kiêng tên húy của vua Tự Đức (là Nguyễn Phúc Thì), triều đình đã đổi tên xã Thi Trung thành xã Phương Trung. Tên gọi hành chính này được giữ nguyên cho đến tận ngày nay, dù trong sinh hoạt dân gian người ta vẫn trìu mến gọi bằng tên Nôm là "Làng Chuông".</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Khoảng năm 1940</h3>
-                    <h4>Chuyển mình sang nón lá chóp</h4>
-                    <p>Trong suốt hàng trăm năm, làng Chuông là nguồn cung cấp nón quai thao, nón ba vòng lớn nhất cho cả vùng Kinh kỳ. Tuy nhiên, từ khoảng năm 1940, để thích ứng với thị hiếu mới, làng bắt đầu cải tiến và chuyển hẳn sang sản xuất loại nón lá hình chóp (với 16 vành tre chuẩn mực). Đây chính là phom dáng chiếc nón lá Làng Chuông thanh thoát, mỏng nhẹ mà chúng ta quen thuộc hiện tại.</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>1947 - 2003</h3>
-                    <h4>Quy hoạch lại cấu trúc hành chính</h4>
-                    <p>Trước Cách mạng Tháng Tám, làng nằm rải rác với 25 xóm nhỏ. Đến năm 1947, chính quyền quy hoạch và gộp lại thành 7 thôn lớn. Tới năm 2003, thôn Tân Dân phát triển đông đúc nên được tách đôi, định hình quy mô Làng Chuông với 8 thôn như ngày nay.</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Năm 2024</h3>
-                    <h4>Phát triển du lịch và không gian sáng tạo</h4>
-                    <p>Thay vì chỉ sản xuất thủ công đơn thuần, làng Chuông chính thức khánh thành Trung tâm Thiết kế sáng tạo, giới thiệu, quảng bá sản phẩm OCOP và làng nghề. Cột mốc này đánh dấu bước chuyển mình mạnh mẽ, đưa không gian nghề nón hơn 300 năm tuổi trở thành một điểm đến trải nghiệm văn hóa và du lịch bài bản của Thủ đô.</p>
-                </div>
+    <!-- TRANG 1: BÌA -->
+    <section class="cover-section">
+        <h1>Nếp Làng</h1>
+        <h2>NÓN LÀNG CHUÔNG</h2>
+        <p>Không gian triển lãm<br>& Trưng bày sản phẩm làng nghề</p>
+    </section>
+
+    <!-- TRANG 2: LỊCH SỬ -->
+    <section>
+        <div class="history-intro">
+            <h2>Lịch sử Làng Chuông</h2>
+            <p>Làng Chuông (tên chữ là xã Phương Trung, thuộc huyện Thanh Oai, Hà Nội) nằm hiền hòa bên dòng sông Đáy. Lịch sử của Làng Chuông là một dòng chảy xuyên suốt hơn một thiên niên kỷ, nơi sự biến thiên của thời cuộc luôn gắn liền với sự thăng trầm của nghề đan nón truyền thống.</p>
+        </div>
+        <div class="timeline-grid">
+            <div class="timeline-item">
+                <h3>791</h3>
+                <h4>Hình thành làng và khởi nghề nón</h4>
+                <p>Làng được lập với tên gọi ban đầu là Trang Thời Trung. Nghề làm nón bắt đầu xuất hiện, chế tác nón cổ tiến hoàng tộc.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>1848</h3>
+                <h4>Đổi tên thành Phương Trung</h4>
+                <p>Năm Tự Đức nguyên niên, đổi tên xã Thi Trung thành Phương Trung. Dân gian vẫn gọi tên Nôm là "Làng Chuông".</p>
+            </div>
+            <div class="timeline-item">
+                <h3>1940</h3>
+                <h4>Chuyển mình sang nón lá chóp</h4>
+                <p>Bắt đầu cải tiến và chuyển hẳn sang sản xuất loại nón lá hình chóp (với 16 vành tre chuẩn mực).</p>
+            </div>
+            <div class="timeline-item">
+                <h3>1947</h3>
+                <h4>Quy hoạch cấu trúc hành chính</h4>
+                <p>Từ 25 xóm nhỏ gộp lại thành các thôn lớn. Tới năm 2003 định hình quy mô Làng Chuông với 8 thôn như hiện nay.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2024</h3>
+                <h4>Phát triển Không gian sáng tạo</h4>
+                <p>Khánh thành Trung tâm Thiết kế sáng tạo, đưa không gian nghề nón thành điểm đến trải nghiệm văn hóa.</p>
             </div>
         </div>
     </section>
 
-    <section class="section soul-section">
-        <div class="container">
-            <img src="image/title2.svg" class="section-title-img" alt="Linh hồn Làng nghề">
-            
-            <blockquote class="quote">
-                "Muốn ăn cơm trắng, cá trê<br>
-                Muốn đội nón lá thì về làng Chuông"
-            </blockquote>
-            <p class="intro-text">Làng Chuông là ngôi làng cổ với lịch sử hơn vài thế kỷ gìn giữ nghề làm nón. Nón lá Làng Chuông không chỉ là vật dụng che mưa nắng, mà đã trở thành một biểu tượng di sản nghệ thuật, đại diện cho sự bền bỉ, khéo léo của người phụ nữ Việt Nam.<br><br>Chợ phiên Làng Chuông (Mộc mạc & Quy củ): Diễn ra vào các ngày mùng 4, 10, 14, 20, 24 và 30 âm lịch hàng tháng. Hình ảnh nhịp điệu nhấp nhô của hàng vạn chiếc nón trắng tại phiên chợ chính là nguồn cảm hứng trực tiếp cho hệ thống nón treo thả phân tầng trong không gian trưng bày này.</p>
-            
-            <div class="process-grid">
-                <div class="step">
-                    <img src="image/icon.svg" class="step-icon" alt="Icon nón lá">
-                    <h3>1. Sơ chế & là phẳng lá nón</h3>
-                    <p><strong>Chọn lá:</strong> Người thợ sử dụng lá lụi hoặc lá cọ non được mang về từ các vùng miền núi. Lá đạt tiêu chuẩn phải có màu trắng xanh, giữ được độ mềm mại.</p>
-                    <p><strong>Là lá:</strong> Lá được hơ trên bếp than củi cho mềm ra, sau đó dùng một miếng gang nóng và chiếc khăn vải để miết (là) từng chiếc lá sao cho thật phẳng, bóng và không bị rách.</p>
-                </div>
-                <div class="step">
-                    <img src="image/icon.svg" class="step-icon" alt="Icon nón lá">
-                    <h3>2. Làm khung & chuốt vành</h3>
-                    <p><strong>Chuốt vành:</strong> Tre hoặc nứa được chẻ nhỏ và chuốt thật nhẵn, uốn thành những vòng tròn. Một chiếc nón tiêu chuẩn luôn có đúng 16 lớp vành lớn nhỏ khác nhau.</p>
-                    <p><strong>Dựng khung:</strong> Các vòng vành này được xếp lên một chiếc khuôn gỗ hình nón từ đỉnh xuống đáy, đảm bảo khoảng cách đều nhau để tạo phom nón cân đối.</p>
-                </div>
-                <div class="step">
-                    <img src="image/icon.svg" class="step-icon" alt="Icon nón lá">
-                    <h3>3. Lợp lá & khâu nón</h3>
-                    <p><strong>Lợp lá:</strong> Thợ khéo léo xếp các phiến lá đã phẳng lên khuôn. Thông thường, nón có 2 lớp lá bên ngoài và trong, ở giữa lót mo tre/cau tạo độ cứng cáp.</p>
-                    <p><strong>Khâu nón (Chằm):</strong> Dùng sợi cước trong suốt khâu cố định lá vào vành tre. Người thợ đưa kim đều tay, giấu mũi chỉ khéo léo sao cho đường kim thẳng hàng, mịn màng.</p>
-                </div>
-                <div class="step">
-                    <img src="image/icon.svg" class="step-icon" alt="Icon nón lá">
-                    <h3>4. Cắt cạp, nức vành & hoàn thiện</h3>
-                    <p><strong>Nức vành:</strong> Khi khâu đến vành cái (vành cuối), cắt bỏ lá thừa, dùng dây cước viền chặt để nón không bị bung.</p>
-                    <p><strong>Hoàn thiện:</strong> Luồn các sợi chỉ len đối xứng bên trong để làm nơi buộc quai. Cuối cùng, quét một lớp dầu bóng giúp chống mốc, tăng độ bền và tạo màu sáng bóng đặc trưng.</p>
-                </div>
-            </div>
+    <!-- TRANG 3: LINH HỒN LÀNG NGHỀ -->
+    <section class="soul-section">
+        <div class="soul-title">Linh hồn<br>Làng nghề</div>
+        <div class="soul-content">
+            <div class="soul-quote">“Muốn ăn cơm trắng, cá trê<br>Muốn đội nón lá thì về làng Chuông”</div>
+            <p>Làng Chuông (xã Phương Trung, huyện Thanh Oai, Hà Nội) là ngôi làng cổ với lịch sử hơn vài thế kỷ gìn giữ nghề làm nón. Nón lá Làng Chuông không chỉ là vật dụng che mưa nắng, mà đã trở thành một biểu tượng di sản nghệ thuật, đại diện cho sự bền bỉ, khéo léo của người phụ nữ Việt Nam.</p>
+            <p>Chợ phiên Làng Chuông: Nơi hàng vạn chiếc nón trắng lấp lánh như sóng lượn dưới bóng mát của cổng làng cổ kính. Hình ảnh nhịp điệu nhấp nhô này chính là nguồn cảm hứng trực tiếp cho hệ thống nón treo thả phân tầng không gian trưng bày.</p>
+        </div>
+    </section>
 
-            <div class="video-container" style="margin-top: 40px; text-align: center; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <iframe width="100%" height="450" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Quy trình làm nón Làng Chuông" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- TRANG 4: QUY TRÌNH CHẾ TÁC -->
+    <section class="process-section">
+        <div class="process-steps">
+            <div class="step-item" data-step="1">
+                <h3>Sơ chế & là phẳng lá nón</h3>
+                <p>Chọn lá lụi hoặc lá cọ non trắng xanh. Lá được hơ trên bếp than củi, dùng miếng gang nóng và khăn vải miết (là) thật phẳng, láng bóng.</p>
+            </div>
+            <div class="step-item" data-step="2">
+                <h3>Làm khung & chuốt vành</h3>
+                <p>Chuốt vành tre/nứa nhỏ nhắn, uốn thành vòng tròn (đúng 16 lớp vành). Dựng khung xếp lên khuôn gỗ hình nón đều khoảng cách.</p>
+            </div>
+            <div class="step-item" data-step="3">
+                <h3>Lợp lá & khâu nón</h3>
+                <p>Xếp 2 lớp lá ngoài và trong, lót giữa bằng mo tre. Dùng sợi cước trong suốt khâu cố định, giấu mũi chỉ thẳng hàng mịn màng.</p>
+            </div>
+            <div class="step-item" data-step="4">
+                <h3>Cắt cạp, nức vành & hoàn thiện</h3>
+                <p>Cắt bỏ lá thừa ở vành cái, nức vành bằng dây cước buộc chặt. Luồn chỉ len làm quai và quét lớp dầu tra bóng chống mốc.</p>
+            </div>
+        </div>
+        <div class="process-images">
+            <div class="img-placeholder">[Vị trí chèn ảnh: anhnon02.png]</div>
+            <div class="img-placeholder">[Vị trí chèn ảnh: anhnon04.png]</div>
+        </div>
+    </section>
+
+    <!-- TRANG 5: PHÂN LOẠI -->
+    <section>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anhnon01.png]</div>
+                <h3>Nón Lá Ba Lớp (Tiêu Chuẩn)</h3>
+                <p>Loại nón 16 vành phổ biến nhất, phom chóp nhọn góc 90 độ, nhẹ, thanh thoát, màu trắng lụa.</p>
+            </div>
+            <div class="portfolio-item">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anhnon02.png]</div>
+                <h3>Nón Quai Thao (Ba Tầm)</h3>
+                <p>Hình đĩa lớn phẳng, đường kính 50-60cm. Lòng khuyên mây đan, dải quai thao tơ tằm thắt nút tua rua.</p>
+            </div>
+            <div class="portfolio-item">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anhnon03.png]</div>
+                <h3>Nón Thêu / Nón Vẽ Tranh</h3>
+                <p>Dòng sản phẩm mỹ nghệ. Thêu trực tiếp hoa sen hoặc vẽ tranh thủy mặc phong cảnh làng quê.</p>
+            </div>
+            <div class="portfolio-item">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anhnon04.png]</div>
+                <h3>Nón Lâm Xung</h3>
+                <p>Đỉnh phẳng hoặc khum nhẹ, dáng dốc phong cách cổ trang, phối đường viền mây tre đan lộ thiên.</p>
             </div>
         </div>
     </section>
 
-    <section class="section products-section">
-        <div class="container">
-            <h2 class="section-title">Các Dòng Sản Phẩm</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="image/anhnon01.png" alt="Nón Lá Ba Lớp">
-                    <h3>Nón Lá Ba Lớp</h3>
-                    <p>Loại nón 16 vành phổ biến nhất, phom chóp nhọn góc 90 độ, nhẹ, thanh thoát, màu trắng lụa, dùng cho sinh hoạt và nghệ thuật.</p>
-                </div>
-                <div class="product-card">
-                    <img src="image/anhnon02.png" alt="Nón Quai Thao">
-                    <h3>Nón Quai Thao (Ba Tầm)</h3>
-                    <p>Hình dáng như chiếc đĩa lớn phẳng, đường kính 50-60cm. Giữa nón có gắn khuyên mây để đội, kết hợp quai thao tơ tằm. Phục trang gắn liền với hội Xuân và dân ca quan họ.</p>
-                </div>
-                <div class="product-card">
-                    <img src="image/anhnon03.png" alt="Nón Thêu / Vẽ Tranh">
-                    <h3>Nón Thêu / Nón Vẽ Tranh</h3>
-                    <p>Dòng sản phẩm mỹ nghệ đương đại. Người thợ thêu hoa sen, chim muông hoặc vẽ tranh phong cảnh trực tiếp lên lá lụi, biến chiếc nón thành một bức tranh di động.</p>
-                </div>
-                <div class="product-card">
-                    <img src="image/anhnon04.png" alt="Nón Lâm Xung">
-                    <h3>Nón Lâm Xung</h3>
-                    <p>Loại nón nghệ thuật có đỉnh phẳng hoặc khum nhẹ, dáng dốc theo phong cách cổ trang. Thường cách tân phối viền mây tre đan lộ thiên để xuất khẩu hoặc làm đèn trang trí.</p>
-                </div>
+    <!-- TRANG 6 & 7: CONCEPT -->
+    <section class="concept-section">
+        <div class="watermark-bg">Nếp Làng</div>
+        <div class="concept-content">
+            <div class="concept-text">
+                <h2>Từ làng nghề<br>đến Nếp Làng</h2>
+                <p>Hành trình đưa chiếc nón lá từ một vật dụng đời thường bước vào không gian nghệ thuật đương đại, khẳng định giá trị bền vững khi di sản được tiếp sức bằng tư duy thiết kế mới.</p>
+                <p>Tên gọi "Nếp Làng" mang tầng nghĩa kép: vừa là "nếp sống", "nếp nghĩ" mộc mạc, quy củ; vừa là những đường "gấp nếp" hình học đặc trưng trên thớ lá nón. Sự tái hiện cấu trúc không gian thân thuộc của làng quê Việt Nam: Mái đình và Cổng làng cổ.</p>
             </div>
-        </div>
-    </section>
-
-    <section class="section concept-section">
-        <div class="container">
-            <img src="image/title3.svg" class="section-title-img" alt="Từ làng nghề đến Nếp Làng">
-            
-            <p class="intro-text">Hành trình đưa chiếc nón lá từ một vật dụng đời thường bước vào không gian nghệ thuật đương đại, khẳng định giá trị bền vững khi di sản được tiếp sức bằng tư duy thiết kế mới.</p>
-            
             <div class="concept-images">
-                <img src="image/anhtong01.png" alt="Tổng quan không gian Nếp Làng">
-                <img src="image/anhvatlieu.png" alt="Vật liệu hữu cơ nguyên bản">
-            </div>
-
-            <div class="concept-details">
-                <div class="text-block">
-                    <p>Tên gọi "Nếp Làng" mang tầng nghĩa kép: vừa là "nếp sống", "nếp nghĩ" mộc mạc, quy củ của làng nghề truyền thống, vừa là những đường "gấp nếp" hình học đặc trưng trên những thớ lá nón.</p>
-                    <p>"Nếp Làng" là sự tái hiện cấu trúc không gian thân thuộc của làng quê Việt Nam: Mái đình và Cổng làng cổ. Bề mặt hệ mái không bao che kín mà được tạo thành từ các mảng lá lụi tước nhỏ kết hợp vải xuyên sáng thả buông rủ.</p>
-                    <p>Ngay phía dưới vòm mái, hệ thống nón lá thành phẩm được treo thả phân tầng. Khi bước qua "cổng làng", người xem như được bao bọc trong một không gian kén tơ bằng lá, trải nghiệm nhịp điệu nhấp nhô của những thớ lá lụi đan xen.</p>
-                </div>
-                <div class="image-block">
-                    <img src="image/anhcan01.png" alt="Cận cảnh chi tiết mái lá và nón treo">
-                </div>
-            </div>
-
-            <div class="exhibition-box">
-                <div class="box-text">
-                    <h3>Khối hộp thông tin (Giấy Dó)</h3>
-                    <p>Nằm tại vị trí trung tâm, cốt lõi của cấu trúc cổng làng là một khối hộp thông tin bốn mặt mang tính tương tác thị giác cao, sử dụng giải pháp đóng - mở tinh tế kết hợp vật liệu đương đại và truyền thống:</p>
-                    <p><strong>Ba mặt đóng bằng Giấy Dó xuyên sáng:</strong> Đóng vai trò như các trang sử liệu chương hồi, lưu trữ nội dung. Dưới tác động của đèn nội tại, bề mặt giấy Dó hiển thị rõ thớ sợi tự nhiên mộc mạc, khuếch tán ánh sáng vàng dịu nhẹ, tạo không khí hoài niệm, trang nghiêm.</p>
-                    <p><strong>Một mặt rỗng hoàn toàn (Mặt mở):</strong> Xóa bỏ ranh giới bao che, tạo góc nhìn trực diện vào khoảng không bên trong. Tại đây, chiếc nón tiêu biểu được đặt trang trọng trên bục như một báu vật di sản được bảo bọc bởi chính những lớp kiến thức xung quanh.</p>
-                </div>
-                <div class="box-images">
-                    <img src="image/anh01.png" alt="Mặt đóng Giấy Dó">
-                    <img src="image/anh02.png" alt="Mặt mở trưng bày nón">
-                </div>
+                <div class="img-placeholder">[Vị trí chèn ảnh: anhtong01.png]</div>
+                <div class="img-placeholder">[Vị trí chèn ảnh: anhvatlieu.png]</div>
             </div>
         </div>
     </section>
 
-    <section class="image-banner-section">
-        <div class="banner-overlay">
-            <img src="image/logo2.png" alt="Nếp Làng" class="logo-banner">
+    <!-- TRANG 8: DETAIL EXHIBIT -->
+    <section>
+        <div class="detail-top">
+            <div class="img-placeholder">[Vị trí chèn ảnh: anhcan01.png]</div>
+            <div class="text">
+                Bề mặt của hệ mái không bao che kín mà được tạo thành từ các mảng lá lụi tước nhỏ kết hợp vải xuyên sáng, thả buông rủ nhẹ nhàng. Ngay phía dưới vòm mái, hệ thống nón lá thành phẩm được sắp đặt treo thả phân tầng. Người xem như được bao bọc trong một không gian kén tơ bằng lá.
+            </div>
+        </div>
+        <div class="detail-bottom">
+            <div class="img-box">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anh01.png]</div>
+            </div>
+            <div class="img-box">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anh02.png]</div>
+            </div>
+            <div class="img-box">
+                <div class="img-placeholder">[Vị trí chèn ảnh: anh03.png]</div>
+            </div>
         </div>
     </section>
 
