@@ -169,7 +169,7 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .item-text-bottom { grid-column: 4 / 5; grid-row: 2 / 3; font-size: 0.85rem; line-height: 1.6; padding-left: 10px; }
 .gallery-list { padding-left: 15px; }
 
-/* SECTION 9: FOOTER VỚI BACKGROUND ẢNH */
+/* SECTION 10: FOOTER VỚI BACKGROUND ẢNH */
 .site-footer { 
     background-image: url('image/back2.png');
     background-size: cover;
@@ -196,41 +196,30 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 /* =========================================
    SECTION 9: TRẢI NGHIỆM 3D (360 VIEWER)
    ========================================= */
-.view-360-container {
-    background-color: var(--color-background-base); /* Giữ nền đồng nhất */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+/* Tùy chỉnh riêng cho Section 9 */
+.section-title-custom {
+    font-size: 2.5rem; 
+    font-weight: 700; 
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
-
+.instruction-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-text-brown);
+    text-align: center;
+    margin-bottom: 30px;
+}
 .interactive-3d-wrapper {
     position: relative;
-    width: 90%;
-    max-width: 800px;
-    background-color: #EBE4DA; /* Màu nền xám nâu nhạt giống hình mẫu */
-    border-radius: 12px;
-    overflow: hidden;
+    width: 95%; /* Mở rộng khung */
+    max-width: 950px; /* Tăng kích thước tối đa */
+    background-color: transparent !important; /* Gỡ nền trắng */
     cursor: grab;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Bảo vệ khu vực kéo thả khỏi các sự kiện ngoài ý muốn */
-    user-select: none; 
-    -webkit-user-select: none;
-}
-
-.interactive-3d-wrapper:active {
-    cursor: grabbing;
-}
-
-/* Ảnh vật thể 3D nằm gọn trong box */
-.image-3d-viewer {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    pointer-events: none; /* Ngăn trình duyệt hiển thị menu tải ảnh khi kéo */
+    user-select: none;
 }
 
 /* Icon con chuột hướng dẫn */
