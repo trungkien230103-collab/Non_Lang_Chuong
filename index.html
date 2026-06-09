@@ -236,11 +236,17 @@
             </div>
         </section>
 
+      <!-- ================= SECTION 9: TRẢI NGHIỆM 3D (XOAY 360) ================= -->
         <section class="snap-section section-split-layout">
             <div class="split-left-area text-center">
                 <div class="split-content-wrapper">
-                    <h2 class="section-title-custom">KHÔNG GIAN TRƯNG BÀY</h2>
-                    <p class="instruction-text">Xoay / lướt ảnh để xem các mặt của không gian trưng bày</p>
+                    <!-- Title SVG to và căn giữa -->
+                    <img src="image/title4.svg" class="svg-title-large margin-auto" alt="Trải nghiệm Không gian trưng bày">
+                    
+                    <!-- Hướng dẫn font Manrope -->
+                    <p class="instruction-text">
+                        XOAY / LƯỚT ẢNH ĐỂ XEM CÁC MẶT<br>CỦA KHÔNG GIAN TRƯNG BÀY
+                    </p>
                 </div>
             </div>
             
@@ -311,7 +317,7 @@ let isDragging = false;
 let startX = 0;
 
 // SỬA SỐ 15 THÀNH 40 ĐỂ GIẢM ĐỘ NHẠY
-const sensitivity = 50; 
+const sensitivity = 100; 
 
 const image360 = document.getElementById('image-360');
 const rotateWrapper = document.getElementById('rotate-360-wrapper');
