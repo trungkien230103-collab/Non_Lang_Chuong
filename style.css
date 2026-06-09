@@ -150,14 +150,14 @@ body.preloader-finish.at-hero-section .hero-description { opacity: 1; transition
 .hat-image-wrapper { flex: 0 0 40%; background: transparent; border-radius: 8px; overflow: hidden; height: auto; }
 .hat-text-wrapper { flex: 0 0 60%; font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 6 & 7: SPLIT VIEW DESKTOP */
-.section-split-layout { display: flex; flex-direction: row; height: 100vh; width: 100%; padding-top: 0; }
-.split-left-area { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; z-index: 3; }
-.split-content-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
-.desktop-bg-fixed { 
-    width: 50%; position: relative; overflow: hidden; 
-    background-image: url('image/anhtong01.png'); background-size: cover; background-attachment: fixed; background-position: right center; background-repeat: no-repeat;
-}
+/* SECTION 6 & 7: ẢNH THẬT + GRADIENT MASK */
+@@ -153,15 +154,17 @@ body.preloader-finish.at-hero-section .hero-description { opacity: 1; transition
+.split-real-bg-image { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1; }
+.gradient-fade-mask { position: absolute; top: 0; left: 0; width: 45%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
+.split-overlay-logo { position: absolute; bottom: 50px; right: 50px; height: 150px; opacity: 0.2; z-index: 3; }
+.material-image-box { width: 100%; height: 180px; background: var(--color-box-placeholder); border-radius: 8px; overflow: hidden; }
+/* Mở khóa chiều cao cho ảnh vật liệu hiển thị đúng chuẩn */
+.material-image-box { width: 100%; height: auto; background: transparent; border-radius: 8px; overflow: hidden; }
 .mobile-only-img { display: none; } /* Ẩn thẻ img thực trên máy tính vì dùng background fixed */
 .desktop-mask { position: absolute; top: 0; left: 0; width: 45%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
 .split-overlay-logo { position: absolute; bottom: 50px; right: 50px; height: 150px; opacity: 0.2; z-index: 3; }
@@ -204,7 +204,7 @@ body.preloader-finish.at-hero-section .hero-description { opacity: 1; transition
 
     /* Logo và Header trên Mobile: Thu gọn, nới lề để không dính sát */
     body.preloader-finish.at-hero-section #flying-logo-brand { height: 160px; top: 35%; } /* Logo nằm cao hơn tí */
-    body.preloader-finish:not(.at-hero-section) #flying-logo-brand { top: 20px; left: 20px; height: 50px; }
+    body.preloader-finish:not(.at-hero-section) #flying-logo-brand { top: 20px; left: 30px; height: 50px; }
     
     .top-navigation { top: 20px; }
     body.preloader-finish:not(.at-hero-section) .nav-school-info { left: 80px; }
@@ -230,7 +230,7 @@ body.preloader-finish.at-hero-section .hero-description { opacity: 1; transition
     .section-5-title-wrapper { margin-bottom: 30px; }
     .hat-types-grid-box { grid-template-columns: 1fr; gap: 30px; }
     .hat-card { flex-direction: column; gap: 15px; }
-    .hat-image-wrapper { width: 100%; height: auto; }
+    .hat-image-wrapper { width: 100%; height: 100%; }
     .hat-text-wrapper { padding: 0 10px; }
 
     /* Section 6 & 7: Split View -> Ảnh thật, không cắt (contain) */
