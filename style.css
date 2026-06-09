@@ -194,52 +194,78 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
 /* =========================================
-   SECTION 9: TRẢI NGHIỆM 3D (360 VIEWER)
+   SECTION 9: TRẢI NGHIỆM 3D (CẬP NHẬT MỚI)
    ========================================= */
-/* Tùy chỉnh riêng cho Section 9 */
-.section-title-custom {
-    font-size: 2.5rem; 
-    font-weight: 700; 
-    margin-bottom: 20px;
-    line-height: 1.2;
+
+/* Tiêu đề SVG mới */
+.svg-title-large {
+    width: 100%;
+    max-width: 400px; /* Tăng kích thước title */
+    margin-bottom: 25px;
+    display: block;
 }
+
+/* Hướng dẫn font Manrope */
 .instruction-text {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
     color: var(--color-text-brown);
     text-align: center;
-    margin-bottom: 30px;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 350px;
 }
+
+/* Vùng chứa 3D Viewer */
+.view-360-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
 .interactive-3d-wrapper {
     position: relative;
-    width: 95%; /* Mở rộng khung */
-    max-width: 950px; /* Tăng kích thước tối đa */
-    background-color: transparent !important; /* Gỡ nền trắng */
+    width: 95%;
+    max-width: 950px; /* Tăng kích thước ảnh */
+    background-color: transparent; 
+    border-radius: 12px;
+    overflow: hidden;
     cursor: grab;
     display: flex;
     align-items: center;
     justify-content: center;
-    user-select: none;
+    user-select: none; 
+    -webkit-user-select: none;
 }
 
-/* Icon con chuột hướng dẫn */
+.image-3d-viewer {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
 .drag-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 35px;
+    width: 40px;
     height: auto;
-    opacity: 0.6;
+    opacity: 0.7;
     pointer-events: none;
 }
+.drag-icon-left { left: 20px; }
+.drag-icon-right { right: 20px; transform: translateY(-50%) scaleX(-1); }
 
-.drag-icon-left {
-    left: 20px;
-}
-
-.drag-icon-right {
-    right: 20px;
-    transform: translateY(-50%) scaleX(-1); /* Lật ngược icon cho bên phải */
+/* Tối ưu mobile cho Section 9 */
+@media (max-width: 992px) {
+    .svg-title-large { max-width: 280px; }
+    .instruction-text { font-size: 1rem; }
+    .view-360-container { width: 100%; padding: 0 10px; }
+    .drag-icon { width: 30px; }
 }
 
 /* ==========================================================================
