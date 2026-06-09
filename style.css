@@ -32,8 +32,9 @@ img { max-width: 100%; height: auto; display: block; }
 .margin-top-20 { margin-top: 20px; } .margin-bottom-20 { margin-bottom: 20px; }
 .margin-top-40 { margin-top: 40px; } .margin-bottom-40 { margin-bottom: 40px; }
 
-/* Thay thế hoàn toàn cách render ảnh: Luôn giữ nguyên tỷ lệ, không cắt gọt */
-.image-contain-full { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* XÓA VIỀN, CHO ẢNH BUNG TỰ NHIÊN THEO TỶ LỆ GỐC */
+.image-fluid-natural { width: 100%; height: auto; display: block; border-radius: 8px; }
+
 .border-radius-8 { border-radius: 8px; }
 .filter-white { filter: brightness(0) invert(1); }
 
@@ -73,25 +74,22 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes fadeInLogo { 100% { opacity: 1; transform: scale(1); } }
 body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 
-
 /* =========================================
-   HEADER LOGO (ỔN ĐỊNH TUYỆT ĐỐI)
+   HEADER LOGO (CỐ ĐỊNH, AN TOÀN TRÊN PC)
    ========================================= */
 .top-navigation { position: fixed; top: 30px; left: 50px; z-index: 9998; width: 100%; pointer-events: none; }
 .nav-logos-group { display: flex; align-items: center; }
 
-/* Logo nhỏ ẩn mặc định, dùng transition nhẹ nhàng */
+/* Logo nhỏ góc trái ẩn mặc định, chỉ hiện khi cuộn (JS đổi Opacity) */
 .nav-logo-small { height: 60px; margin-right: 20px; opacity: 0; transition: opacity 0.3s ease; }
-/* Logo MTCN và chữ */
-.nav-school-info { display: flex; align-items: center; transition: transform 0.4s ease; transform: translateX(0); }
+.nav-school-info { display: flex; align-items: center; transition: transform 0.3s ease; transform: translateX(0); }
 .nav-logo-school { height: 45px; margin-right: 15px; }
 .nav-school-text { font-size: 0.7rem; font-weight: 700; line-height: 1.4; border-left: 1.5px solid var(--color-text-brown); padding-left: 15px; }
 
-
 /* SECTION 1: HERO */
 .section-hero { align-items: center; padding-top: 80px; }
-/* Logo to hiển thị mặc định */
-.hero-main-logo { height: 300px; margin: 0 auto 30px; transition: opacity 0.3s ease; opacity: 1; }
+/* Logo to nằm tĩnh, không bay nhảy */
+.hero-main-logo { height: 320px; margin: 0 auto 30px; transition: opacity 0.3s ease; opacity: 1; }
 .hero-subtitle { font-size: 1.5rem; letter-spacing: 8px; font-weight: 700; margin-bottom: 50px; }
 .hero-description { font-size: 1.1rem; letter-spacing: 3px; line-height: 1.6; }
 
@@ -127,9 +125,9 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 4 & 5: CÁC LOẠI NÓN */
+/* SECTION 4 & 5 */
 .container-video { max-width: 1000px; }
-.video-container-box { position: relative; width: 100%; padding-top: 56.25%; background: var(--color-box-placeholder); border-radius: 12px; }
+.video-container-box { position: relative; width: 100%; padding-top: 56.25%; background: var(--color-box-placeholder); border-radius: 12px; overflow: hidden; }
 .video-iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
 .video-placeholder-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; z-index: 1; }
 
@@ -137,32 +135,23 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 .hat-types-grid-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; }
 .hat-card { display: flex; gap: 20px; align-items: center; }
 
-/* KHÓA CỨNG CHIỀU CAO CHO TỶ LỆ 5:4 */
-.hat-image-wrapper { 
-    flex: 0 0 40%; 
-    height: 180px; /* Khóa cao cố định để không bị phình to */
-    border-radius: 8px; 
-    overflow: hidden; 
-    background-color: var(--color-background-base);
-}
+/* Wrapper tự động co giãn theo chiều cao của ảnh */
+.hat-image-wrapper { flex: 0 0 40%; background: transparent; }
 .hat-text-wrapper { flex: 0 0 60%; font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 6 & 7: ẢNH THẬT NỬA MÀN HÌNH CHUẨN DESIGN */
+/* SECTION 6 & 7: ẢNH ĐỘC LẬP */
 .section-split-layout { display: flex; flex-direction: row; height: 100vh; width: 100%; padding-top: 0; }
 .split-left-area { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; z-index: 3; }
 .split-content-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
 
-.split-right-area { position: relative; width: 50%; height: 100vh; background-color: var(--color-background-base); overflow: hidden;}
-.split-real-image { width: 100%; height: 100%; object-fit: cover; object-position: center center; position: absolute; top: 0; left: 0; z-index: 1;}
+/* Khung nửa phải lấp đầy 50%, ảnh bên trong cover cắt giữa */
+.split-right-area { position: relative; width: 50%; height: 100vh; background-color: transparent; overflow: hidden; }
+.split-standard-image { width: 100%; height: 100%; object-fit: cover; object-position: center center; position: absolute; top: 0; left: 0; z-index: 1; }
 .gradient-fade-mask { position: absolute; top: 0; left: 0; width: 35%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
-
-/* Giới hạn chiều cao cho ảnh vật liệu Section 7 */
-.material-image-box { width: 100%; height: 180px; border-radius: 8px; overflow: hidden; background-color: var(--color-background-base); }
+.material-image-box { width: 100%; height: auto; border-radius: 8px; overflow: hidden; background: transparent; }
 
 /* SECTION 8: GALLERY */
 .gallery-master-grid { display: grid; grid-template-columns: 2.5fr 2fr 1.5fr 1.5fr; gap: 20px; align-items: start; }
-/* Mở khóa ảnh hiển thị tự nhiên */
-.grid-item { background-color: transparent; }
 .item-image-large { grid-column: 1 / 2; grid-row: 1 / 2; }
 .item-text-top { grid-column: 2 / 3; grid-row: 1 / 2; font-size: 0.85rem; line-height: 1.5; padding: 0 10px; }
 .item-image-small-1 { grid-column: 3 / 4; grid-row: 1 / 2; }
@@ -190,30 +179,31 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
-   TỐI ƯU MOBILE (ỔN ĐỊNH LAYOUT, KHÔNG LỖI ẢNH)
+   TỐI ƯU MOBILE 100% ỔN ĐỊNH LAYOUT, KHÔNG LỖI ẢNH, KHÔNG BỊ CẮT XÉN
    ========================================================================== */
 @media (max-width: 992px) {
-    /* Tắt Snap Scroll để scroll mượt mà như đọc báo */
+    /* Tắt Snap Scroll trên mobile */
     .snap-scroll-container { scroll-snap-type: none; overflow-y: auto; }
-    .snap-section { height: auto; min-height: 100vh; padding: 70px 0; }
+    .snap-section { height: auto; min-height: auto; padding: 60px 0; }
     
     .container { padding: 0 15px; }
     .padding-top-fix { padding-top: 10px; }
 
-    /* HEADER MOBILE: HAI LOGO ỔN ĐỊNH */
+    /* HEADER MOBILE: HIỂN THỊ CẢ 2 LOGO LUÔN TĨNH */
     .top-navigation { top: 15px; left: 15px; }
     .nav-logos-group { display: flex; flex-direction: row; align-items: center; }
-    #nav-small-logo { height: 45px; margin-right: 15px; }
+    /* Bật sáng logo nhỏ, vô hiệu hóa hiệu ứng ẩn/hiện */
+    .nav-logo-small { opacity: 1 !important; visibility: visible; height: 45px; margin-right: 15px; }
     .nav-school-info { transform: translateX(0) !important; } 
     .nav-logo-school { height: 35px; margin-right: 10px; }
-    .nav-school-text { font-size: 0.65rem; padding-left: 10px; }
+    .nav-school-text { display: block; font-size: 0.65rem; padding-left: 10px; }
 
     /* HERO TEXT MOBILE: LOGO TO MẶC ĐỊNH */
     .section-hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-    .hero-main-logo { height: 180px; margin-bottom: 20px; }
+    .hero-main-logo { height: 180px; margin-bottom: 20px; opacity: 1 !important; } /* Không bao giờ mờ đi */
     .hero-subtitle { font-size: 1.3rem; letter-spacing: 5px; margin-top: 20px; margin-bottom: 20px;}
 
-    /* LỊCH SỬ & QUY TRÌNH: 1 CỘT, GIẢM KHOẢNG TRỐNG */
+    /* LỊCH SỬ & QUY TRÌNH: 1 CỘT */
     .history-top-layout, .process-layout { flex-direction: column; gap: 20px; margin-bottom: 10px;}
     .history-title-box, .process-left-column { width: 100%; text-align: center; }
     .history-text-box, .process-right-column { width: 100%; padding: 0 5px; }
@@ -225,24 +215,24 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
     .timeline-node { min-width: 280px; scroll-snap-align: center; }
     .timeline-horizontal-line { top: 32px; }
     
-    /* LƯỚI NÓN: ẢNH HIỆN 100%, KHÔNG CẮT */
-    .section-5-title-wrapper { margin-bottom: 20px; }
+    /* LƯỚI NÓN: ẢNH HIỆN 100%, BUNG HẾT CỠ */
+    .section-5-title-wrapper { margin-bottom: 30px; }
     .hat-types-grid-box { grid-template-columns: 1fr; gap: 30px; }
-    .hat-card { flex-direction: column; gap: 10px; margin-bottom: 15px;}
-    .hat-image-wrapper { width: 100%; height: auto; } /* Mở khóa height trên mobile */
+    .hat-card { flex-direction: column; gap: 15px; margin-bottom: 15px;}
+    .hat-image-wrapper { width: 100%; height: auto; }
     .hat-text-wrapper { padding: 0 5px; text-align: justify; }
 
-    /* SECTION 6 & 7: 1 CỘT */
-    .section-split-layout { flex-direction: column; height: auto; min-height: auto; padding-top: 50px; }
+    /* SECTION 6 & 7: 1 CỘT, ẢNH TỰ DO BUNG 100% TRÊN MOBILE */
+    .section-split-layout { flex-direction: column; padding-top: 50px; }
     .split-left-area { width: 100%; padding: 0 15px; margin-bottom: 20px; }
     
-    .split-right-area { width: 100%; height: 35vh; background-color: transparent;}
-    .split-real-image { position: relative; width: 100%; height: 100%; object-fit: contain; border-radius: 8px;} /* Ảnh không cắt trên mobile */
+    /* Trả ảnh về tự do thay vì Fixed/Cover 50% như máy tính */
+    .split-right-area { width: 100%; height: auto; background-color: transparent;}
+    .split-standard-image { position: relative; width: 100%; height: auto; object-fit: contain; border-radius: 8px;} 
     .gradient-fade-mask { display: none; }
-    .material-image-box { height: auto; }
 
     /* GALLERY 8: 1 CỘT */
-    .gallery-master-grid { display: flex; flex-direction: column; gap: 15px; }
+    .gallery-master-grid { display: flex; flex-direction: column; gap: 20px; }
     .item-text-top, .item-text-bottom { padding: 0 5px; }
     
     /* FOOTER */
