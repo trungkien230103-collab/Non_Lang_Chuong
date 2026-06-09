@@ -239,10 +239,8 @@
         <section class="snap-section section-split-layout">
             <div class="split-left-area text-center">
                 <div class="split-content-wrapper">
-                    <img src="image/title4.svg" class="svg-title-medium margin-auto margin-bottom-20" alt="Trải nghiệm Không gian trưng bày">
-                    <p class="text-justify font-beautique" style="font-size: 1.2rem; margin-top: 40px; letter-spacing: 1px;">
-                        XOAY / LƯỚT ẢNH ĐỂ XEM CÁC MẶT<br>CẤU KHÔNG GIAN TRƯNG BÀY
-                    </p>
+                    <h2 class="section-title-custom">KHÔNG GIAN TRƯNG BÀY</h2>
+                    <p class="instruction-text">Xoay / lướt ảnh để xem các mặt của không gian trưng bày</p>
                 </div>
             </div>
             
@@ -250,7 +248,6 @@
                 <div class="interactive-3d-wrapper" id="rotate-360-wrapper">
                     <img src="image/icons.svg" class="drag-icon drag-icon-left" alt="Kéo sang trái">
                     <img src="image/icons.svg" class="drag-icon drag-icon-right" alt="Kéo sang phải">
-                    
                     <img src="image/1.png" class="image-3d-viewer" id="image-360" alt="Góc không gian 3D">
                 </div>
             </div>
@@ -306,13 +303,20 @@
         /* =========================================================
                LOGIC XOAY ẢNH 3D (360 VIEWER) - MƯỢT MÀ VÀ PRELOAD
                ========================================================= */
-            const totalFrames = 8; // Tổng số ảnh (1.png đến 8.png)
-            let currentFrame = 1;
-            let isDragging = false;
-            let startX = 0;
-            const sensitivity = 20; // Độ nhạy: di chuyển 20px thì đổi 1 frame
-            const image360 = document.getElementById('image-360');
-            const rotateWrapper = document.getElementById('rotate-360-wrapper');
+/* Tìm đoạn logic xoay ảnh trong script cũ và thay đổi thông số này: */
+
+const totalFrames = 8;
+let currentFrame = 1;
+let isDragging = false;
+let startX = 0;
+
+// SỬA SỐ 15 THÀNH 40 ĐỂ GIẢM ĐỘ NHẠY
+const sensitivity = 50; 
+
+const image360 = document.getElementById('image-360');
+const rotateWrapper = document.getElementById('rotate-360-wrapper');
+
+// Phần còn lại của hàm updateFrame giữ nguyên không đổi
 
             // 1. Tải trước (Preload) 8 ảnh ngầm để không bị lag khi xoay
             const preloadedImages = [];
