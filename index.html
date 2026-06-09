@@ -236,26 +236,28 @@
             </div>
         </section>
 
-      <!-- ================= SECTION 9: TRẢI NGHIỆM 3D ================= -->
-<section class="snap-section section-split-layout">
-    <div class="split-left-area text-center">
-        <div class="split-content-wrapper">
-            <img src="image/title4.svg" class="svg-title-large margin-auto" alt="Trải nghiệm Không gian trưng bày">
-            <p class="instruction-text">XOAY / LƯỚT ẢNH ĐỂ XEM CÁC MẶT CỦA KHÔNG GIAN TRƯNG BÀY</p>
-        </div>
-    </div>
-    
-    <div class="split-right-area view-360-container">
-        <div class="interactive-3d-wrapper" id="rotate-360-wrapper">
-            <!-- Icon con chuột -->
-            <img src="image/icons.svg" class="drag-icon drag-icon-left" alt="Kéo">
-            <img src="image/icons.svg" class="drag-icon drag-icon-right" alt="Kéo">
+      <!-- ================= SECTION 9: TRẢI NGHIỆM 3D (XOAY 360) ================= -->
+        <section class="snap-section section-split-layout">
+            <div class="split-left-area text-center">
+                <div class="split-content-wrapper">
+                    <!-- Title SVG to và căn giữa -->
+                    <img src="image/title4.svg" class="svg-title-large margin-auto" alt="Trải nghiệm Không gian trưng bày">
+                    
+                    <!-- Hướng dẫn font Manrope -->
+                    <p class="instruction-text">
+                        XOAY / LƯỚT ẢNH ĐỂ XEM CÁC MẶT<br>CỦA KHÔNG GIAN TRƯNG BÀY
+                    </p>
+                </div>
+            </div>
             
-            <!-- Ảnh chính -->
-            <img src="image/1.png" class="image-3d-viewer" id="image-360" alt="Góc không gian 3D">
-        </div>
-    </div>
-</section>
+            <div class="split-right-area view-360-container">
+                <div class="interactive-3d-wrapper" id="rotate-360-wrapper">
+                    <img src="image/icons.svg" class="drag-icon drag-icon-left" alt="Kéo sang trái">
+                    <img src="image/icons.svg" class="drag-icon drag-icon-right" alt="Kéo sang phải">
+                    <img src="image/1.png" class="image-3d-viewer" id="image-360" alt="Góc không gian 3D">
+                </div>
+            </div>
+        </section>
         
         <section class="snap-section site-footer">
             <div class="container footer-content-wrapper">
@@ -315,7 +317,7 @@ let isDragging = false;
 let startX = 0;
 
 // SỬA SỐ 15 THÀNH 40 ĐỂ GIẢM ĐỘ NHẠY
-const sensitivity = 200; 
+const sensitivity = 400; 
 
 const image360 = document.getElementById('image-360');
 const rotateWrapper = document.getElementById('rotate-360-wrapper');
