@@ -13,9 +13,17 @@
 </head>
 <body>
 
+    <div id="preloader-screen">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <img src="image/logo1.png" alt="Đang tải..." class="loader-logo-img">
+        </div>
+    </div>
+
+    <img src="image/logo1.png" alt="Logo Nếp Làng" id="flying-logo-brand">
+
     <header class="top-navigation">
-        <img src="image/logo1.png" alt="Logo Nếp Làng" class="nav-logo-brand">
-        <div class="nav-school-info">
+        <div class="nav-school-info" id="moving-school-info">
             <img src="image/logomtcn.png" alt="Logo Đại học MTCN" class="nav-logo-school">
             <div class="nav-school-text">
                 ĐẠI HỌC MỸ THUẬT CÔNG NGHIỆP<br>
@@ -26,9 +34,8 @@
 
     <main class="snap-scroll-container">
 
-        <section class="snap-section section-hero">
-            <div class="hero-content-wrapper">
-                <img src="image/logo1.png" alt="Nếp Làng" class="hero-logo-large">
+        <section class="snap-section section-hero" id="trigger-hero">
+            <div class="hero-content-wrapper text-center">
                 <h2 class="hero-subtitle">NÓN LÀNG CHUÔNG</h2>
                 <div class="hero-description">
                     <p>KHÔNG GIAN TRIỂN LÃM</p>
@@ -38,50 +45,52 @@
         </section>
 
         <section class="snap-section section-history">
-            <div class="container">
+            <div class="container margin-top-40">
                 <div class="history-top-layout">
                     <div class="history-title-box">
-                        <img src="image/title1.svg" alt="Lịch sử Làng Chuông" class="svg-title-large">
+                        <img src="image/title1.svg" alt="Lịch sử Làng Chuông" class="svg-title-xlarge">
                     </div>
-                    <div class="history-text-box">
+                    <div class="history-text-box text-justify">
                         <p>Làng Chuông (tên chữ là xã Phương Trung, thuộc huyện Thanh Oai, Hà Nội) nằm hiền hòa bên dòng sông Đáy. Không chỉ là một ngôi làng cổ mang đậm nét kiến trúc đồng bằng Bắc Bộ, nơi đây còn được mệnh danh là "thủ phủ nón lá" của Việt Nam.</p>
                         <br>
                         <p>Lịch sử của Làng Chuông là một dòng chảy xuyên suốt hơn một thiên niên kỷ, nơi sự biến thiên của thời cuộc luôn gắn liền với sự thăng trầm của nghề đan nón truyền thống.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="history-timeline-wrapper animate-element">
-                    <div class="timeline-horizontal-line"></div>
+            <div class="history-timeline-wrapper animate-element">
+                <div class="timeline-horizontal-line"></div>
+                <div class="container timeline-container">
                     <div class="timeline-nodes-grid">
-                        <div class="timeline-node">
-                            <div class="node-icon-box"><img src="image/icon.svg" alt="Icon" class="node-icon"></div>
+                        <div class="timeline-node step-anim">
+                            <div class="node-icon-box"><img src="image/icon.svg" class="node-icon"></div>
                             <h4 class="node-title font-beautique">Hình thành làng và khởi nghề nón</h4>
                             <span class="node-year">Năm 791 (Thế kỷ VIII)</span>
-                            <p class="node-desc">Làng được lập với tên gọi ban đầu là Trang Thời Trung. Theo các bậc cao niên, nghề làm nón bắt đầu xuất hiện từ đây. Xưa kia, làng chuyên chế tác nón cổ để cống tiến hoàng tộc: nón ba tầm, quai thao cho nữ; nón chóp, nón dấu cho nam giới.</p>
+                            <p class="node-desc text-justify">Làng được lập với tên gọi ban đầu là Trang Thời Trung. Theo các bậc cao niên, nghề làm nón bắt đầu xuất hiện từ đây. Xưa kia, làng chuyên chế tác nón cổ để cống tiến hoàng tộc: nón ba tầm, quai thao cho nữ; nón chóp, nón dấu cho nam giới.</p>
                         </div>
-                        <div class="timeline-node">
-                            <div class="node-icon-box"><img src="image/icon.svg" alt="Icon" class="node-icon"></div>
+                        <div class="timeline-node step-anim">
+                            <div class="node-icon-box"><img src="image/icon.svg" class="node-icon"></div>
                             <h4 class="node-title font-beautique">Đổi tên thành Phương Trung</h4>
                             <span class="node-year">Năm 1848</span>
-                            <p class="node-desc">Vào năm Tự Đức nguyên niên, vì phải kiêng tên húy của vua Tự Đức, triều đình đổi tên xã Thi Trung thành Phương Trung. Tên gọi hành chính này được giữ nguyên, dù dân gian vẫn trìu mến gọi là "Làng Chuông".</p>
+                            <p class="node-desc text-justify">Vào năm Tự Đức nguyên niên, vì phải kiêng tên húy của vua Tự Đức, triều đình đổi tên xã Thi Trung thành Phương Trung. Tên gọi hành chính này được giữ nguyên, dù dân gian vẫn trìu mến gọi là "Làng Chuông".</p>
                         </div>
-                        <div class="timeline-node">
-                            <div class="node-icon-box"><img src="image/icon.svg" alt="Icon" class="node-icon"></div>
+                        <div class="timeline-node step-anim">
+                            <div class="node-icon-box"><img src="image/icon.svg" class="node-icon"></div>
                             <h4 class="node-title font-beautique">Chuyển mình sang nón lá chóp</h4>
                             <span class="node-year">Khoảng năm 1940</span>
-                            <p class="node-desc">Để thích ứng với thị hiếu mới, làng bắt đầu cải tiến và chuyển hẳn sang sản xuất loại nón lá hình chóp (với 16 vành tre chuẩn mực). Đây chính là phom dáng chiếc nón lá Làng Chuông thanh thoát hiện tại.</p>
+                            <p class="node-desc text-justify">Để thích ứng với thị hiếu mới, làng bắt đầu cải tiến và chuyển hẳn sang sản xuất loại nón lá hình chóp (với 16 vành tre chuẩn mực). Đây chính là phom dáng chiếc nón lá Làng Chuông thanh thoát hiện tại.</p>
                         </div>
-                        <div class="timeline-node">
-                            <div class="node-icon-box"><img src="image/icon.svg" alt="Icon" class="node-icon"></div>
+                        <div class="timeline-node step-anim">
+                            <div class="node-icon-box"><img src="image/icon.svg" class="node-icon"></div>
                             <h4 class="node-title font-beautique">Quy hoạch lại cấu trúc hành chính</h4>
                             <span class="node-year">1947 - 2003</span>
-                            <p class="node-desc">Năm 1947, quy hoạch gộp lại thành 7 thôn lớn. Tới năm 2003, thôn Tân Dân phát triển đông đúc nên được tách đôi, định hình quy mô Làng Chuông với 8 thôn như ngày nay.</p>
+                            <p class="node-desc text-justify">Năm 1947, quy hoạch gộp lại thành 7 thôn lớn. Tới năm 2003, thôn Tân Dân phát triển đông đúc nên được tách đôi, định hình quy mô Làng Chuông với 8 thôn như ngày nay.</p>
                         </div>
-                        <div class="timeline-node">
-                            <div class="node-icon-box"><img src="image/icon.svg" alt="Icon" class="node-icon"></div>
+                        <div class="timeline-node step-anim">
+                            <div class="node-icon-box"><img src="image/icon.svg" class="node-icon"></div>
                             <h4 class="node-title font-beautique">Phát triển du lịch & không gian sáng tạo</h4>
                             <span class="node-year">Năm 2024</span>
-                            <p class="node-desc">Thay vì chỉ sản xuất thủ công đơn thuần, làng Chuông khánh thành Trung tâm Thiết kế sáng tạo OCOP. Đưa không gian nghề nón trở thành một điểm đến trải nghiệm văn hóa bài bản.</p>
+                            <p class="node-desc text-justify">Thay vì chỉ sản xuất thủ công đơn thuần, làng Chuông khánh thành Trung tâm Thiết kế sáng tạo OCOP. Đưa không gian nghề nón trở thành một điểm đến trải nghiệm văn hóa bài bản.</p>
                         </div>
                     </div>
                 </div>
@@ -91,45 +100,17 @@
         <section class="snap-section section-process">
             <div class="container process-layout animate-element">
                 <div class="process-left-column text-center">
-                    <img src="image/title2.svg" alt="Linh hồn làng nghề" class="svg-title-large margin-auto">
-                    <h3 class="process-quote font-beautique">"Muốn ăn cơm trắng, cá trê<br>Muốn đội nón lá thì về làng Chuông"</h3>
-                    <p class="process-desc">Làng Chuông (xã Phương Trung, huyện Thanh Oai, Hà Nội) là ngôi làng cổ với lịch sử hơn vài thế kỷ gìn giữ nghề làm nón. Nón lá Làng Chuông không chỉ là vật dụng che mưa nắng, mà đã trở thành một biểu tượng di sản nghệ thuật, đại diện cho sự bền bỉ của người phụ nữ Việt Nam.</p>
-                    <p class="process-desc">Chợ phiên Làng Chuông (Mộc mạc & Quy củ): Diễn ra vào các ngày mùng 4, 10, 14, 20, 24 và 30 âm lịch. Đây là nơi giao thương và là một "triển lãm sống" ngoài trời, nguồn cảm hứng trực tiếp cho hệ thống nón treo thả phân tầng của không gian trưng bày này.</p>
+                    <img src="image/title2.svg" class="svg-title-medium margin-auto">
+                    <h3 class="process-quote font-beautique margin-top-20">"Muốn ăn cơm trắng, cá trê<br>Muốn đội nón lá thì về làng Chuông"</h3>
+                    <p class="process-desc text-justify">Làng Chuông (xã Phương Trung, huyện Thanh Oai, Hà Nội) là ngôi làng cổ với lịch sử hơn vài thế kỷ gìn giữ nghề làm nón. Nón lá Làng Chuông không chỉ là vật dụng che mưa nắng, mà đã trở thành một biểu tượng di sản nghệ thuật.</p>
+                    <p class="process-desc text-justify margin-top-20">Chợ phiên Làng Chuông: Diễn ra vào các ngày mùng 4, 10, 14, 20, 24 và 30 âm lịch. Đây là nơi giao thương và là một "triển lãm sống" ngoài trời, nguồn cảm hứng trực tiếp cho hệ thống nón treo thả phân tầng của không gian trưng bày này.</p>
                 </div>
                 <div class="process-right-column">
-                    <div class="vertical-curved-line"></div>
-                    
-                    <div class="process-step step-one">
-                        <div class="step-number font-beautique">1</div>
-                        <div class="step-content">
-                            <h4 class="step-title">Sơ chế & làm phẳng lá nón</h4>
-                            <p class="step-detail"><b>Chọn lá:</b> Sử dụng lá lụi hoặc lá cọ non trắng xanh.<br><b>Là lá:</b> Hơ trên bếp than củi cho mềm, dùng gang nóng miết lá thật phẳng và láng bóng.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step step-two">
-                        <div class="step-number font-beautique">2</div>
-                        <div class="step-content">
-                            <h4 class="step-title">Làm khung & chuốt vành</h4>
-                            <p class="step-detail"><b>Chuốt vành:</b> Tre nứa được chẻ nhỏ, chuốt nhẵn thành 16 vòng tròn.<br><b>Dựng khung:</b> Xếp lên khuôn gỗ, đảm bảo khoảng cách các vành hoàn toàn đều nhau.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step step-three">
-                        <div class="step-number font-beautique">3</div>
-                        <div class="step-content">
-                            <h4 class="step-title">Lợp lá & khâu nón</h4>
-                            <p class="step-detail"><b>Lợp lá:</b> Xếp 2 lớp lá ngoài và trong, ở giữa lót thêm mo tre tạo độ cứng.<br><b>Khâu nón:</b> Dùng sợi cước khâu cố định lá vào vành tre, giấu mũi chỉ thật khéo.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step step-four">
-                        <div class="step-number font-beautique">4</div>
-                        <div class="step-content">
-                            <h4 class="step-title">Cắt cạp, nức vành & hoàn thiện</h4>
-                            <p class="step-detail"><b>Nức vành:</b> Cắt bỏ hết phần lá thừa sau đó viền quanh vành cái để không bị bung.<br><b>Hoàn thiện:</b> Luồn chỉ màu buộc quai, quét một lớp dầu bóng giúp chống mốc.</p>
-                        </div>
-                    </div>
+                    <div class="vertical-curved-line line-anim"></div>
+                    <div class="process-step step-one step-anim"><div class="step-number font-beautique">1</div><div class="step-content"><h4 class="step-title">Sơ chế & làm phẳng lá nón</h4><p class="step-detail"><b>Chọn lá:</b> Sử dụng lá lụi hoặc lá non trắng xanh.<br><b>Là lá:</b> Hơ trên bếp than củi cho mềm, dùng gang nóng miết lá thật phẳng.</p></div></div>
+                    <div class="process-step step-two step-anim"><div class="step-number font-beautique">2</div><div class="step-content"><h4 class="step-title">Làm khung & chuốt vành</h4><p class="step-detail"><b>Chuốt vành:</b> Tre nứa chẻ nhỏ, chuốt nhẵn thành 16 vòng.<br><b>Dựng khung:</b> Xếp lên khuôn gỗ, khoảng cách các vành hoàn toàn đều nhau.</p></div></div>
+                    <div class="process-step step-three step-anim"><div class="step-number font-beautique">3</div><div class="step-content"><h4 class="step-title">Lợp lá & khâu nón</h4><p class="step-detail"><b>Lợp lá:</b> Xếp 2 lớp lá, lót thêm mo tre tạo độ cứng.<br><b>Khâu nón:</b> Dùng sợi cước khâu cố định lá vào vành tre, giấu mũi chỉ.</p></div></div>
+                    <div class="process-step step-four step-anim"><div class="step-number font-beautique">4</div><div class="step-content"><h4 class="step-title">Cắt cạp, nức vành & hoàn thiện</h4><p class="step-detail"><b>Nức vành:</b> Cắt bỏ lá thừa viền quanh vành cái để không bung.<br><b>Hoàn thiện:</b> Luồn chỉ màu, quét dầu bóng giúp chống mốc.</p></div></div>
                 </div>
             </div>
         </section>
@@ -137,7 +118,7 @@
         <section class="snap-section section-video">
             <div class="container container-video">
                 <div class="video-container-box">
-                    <iframe class="video-iframe" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe class="video-iframe" src="" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                     <div class="video-placeholder-text font-beautique">Hiển thị bằng link video youtube</div>
                 </div>
             </div>
@@ -146,80 +127,71 @@
         <section class="snap-section section-hat-types">
             <div class="container">
                 <div class="text-center">
-                    <img src="image/title2.svg" alt="Linh hồn làng nghề" class="svg-title-large margin-auto margin-bottom-40">
+                    <img src="image/title2.svg" class="svg-title-medium margin-auto margin-bottom-40">
                 </div>
                 <div class="hat-types-grid-box">
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon01.png" alt="Nón lá ba lớp" class="image-cover"></div>
-                        <div class="hat-text-wrapper"><p><b>Nón Lá Ba Lớp (Nón Chuông Tiêu Chuẩn):</b> Loại nón 16 vành phổ biến nhất, phom chóp nhọn góc 90 độ, nhẹ, thanh thoát, màu trắng lụa, dùng cho sinh hoạt và nghệ thuật.</p></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon01.png" class="image-cover"></div>
+                        <div class="hat-text-wrapper"><p><b>Nón Lá Ba Lớp:</b> Phom chóp nhọn góc 90 độ, nhẹ, thanh thoát, màu trắng lụa, dùng cho sinh hoạt và nghệ thuật.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon02.png" alt="Nón quai thao" class="image-cover"></div>
-                        <div class="hat-text-wrapper"><p><b>Nón Quai Thao (Nón Ba Tầm):</b> Hình dáng giống như chiếc đĩa lớn phẳng, đường kính từ 50-60cm, thành nón cao khoảng 10cm, làm từ lá cọ xử lý kỹ. Giữa nón có gắn lòng khuyên bằng mây đan để đội đầu.</p></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon02.png" class="image-cover"></div>
+                        <div class="hat-text-wrapper"><p><b>Nón Quai Thao:</b> Chiếc đĩa lớn phẳng, đường kính từ 50-60cm, thành nón cao khoảng 10cm. Ở giữa gắn lòng khuyên bằng mây đan để đội đầu.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon03.png" alt="Nón thêu" class="image-cover"></div>
-                        <div class="hat-text-wrapper"><p><b>Nón Thêu / Nón Vẽ Tranh Phong Cảnh:</b> Dòng sản phẩm mỹ nghệ đương đại. Người thợ thêu trực tiếp các bông hoa sen, chim muông hoặc vẽ tranh thủy mặc phong cảnh làng quê Việt Nam lên bề mặt lá.</p></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon03.png" class="image-cover"></div>
+                        <div class="hat-text-wrapper"><p><b>Nón Thêu Phong Cảnh:</b> Sản phẩm mỹ nghệ. Thợ thêu bông hoa sen, chim muông hoặc vẽ thủy mặc phong cảnh quê hương lên lá.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon04.png" alt="Nón lâm xung" class="image-cover"></div>
-                        <div class="hat-text-wrapper"><p><b>Nón Lâm Xung (Nón Nghệ Thuật):</b> Loại nón có đỉnh phẳng hoặc hơi khum nhẹ, dáng nón rộng và hơi dốc dốc theo phong cách cổ trang, thường được xuất khẩu hoặc làm đèn trang trí cao cấp.</p></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon04.png" class="image-cover"></div>
+                        <div class="hat-text-wrapper"><p><b>Nón Lâm Xung:</b> Loại nón đỉnh phẳng hoặc khum nhẹ, dáng dốc theo phong cách cổ trang, thường xuất khẩu làm đèn trang trí.</p></div>
                     </div>
                 </div>
-                <p class="text-center source-text">Nguồn hình ảnh: Báo Quân Đội Nhân Dân Điện tử</p>
             </div>
         </section>
 
         <section class="snap-section section-split">
             <div class="split-left-area text-center">
-                <img src="image/title3.svg" alt="Từ làng nghề đến nếp làng" class="svg-title-large margin-auto margin-bottom-20">
+                <img src="image/title3.svg" class="svg-title-medium margin-auto margin-bottom-20">
                 <p class="split-paragraph text-justify">Hành trình đưa chiếc nón lá từ một vật dụng đời thường bước vào không gian nghệ thuật đương đại, khẳng định giá trị bền vững khi di sản được tiếp sức bằng tư duy thiết kế mới.</p>
             </div>
-            <div class="split-right-area background-image-1">
+            <div class="split-right-area bg-morph-fixed">
                 <div class="gradient-overlay-left"></div>
-                <img src="image/logo2.png" alt="Logo Nếp Làng" class="split-overlay-logo">
+                <img src="image/logo2.png" class="split-overlay-logo">
             </div>
         </section>
 
         <section class="snap-section section-split">
             <div class="split-left-area text-center">
-                <img src="image/title3.svg" alt="Từ làng nghề đến nếp làng" class="svg-title-large margin-auto margin-bottom-20">
+                <img src="image/title3.svg" class="svg-title-medium margin-auto margin-bottom-20">
                 <p class="split-paragraph text-justify">Tên gọi "Nếp Làng" mang tầng nghĩa kép: vừa là "nếp sống", "nếp nghĩ" mộc mạc, quy củ của làng nghề truyền thống; vừa là những đường "gấp nếp" hình học đặc trưng trên những thớ lá nón.</p>
-                <p class="split-paragraph text-justify margin-top-20">"Nếp Làng" là sự tái hiện cấu trúc không gian thân thuộc của làng quê Việt Nam: Mái đình và Cổng làng cổ. Không gian triển lãm đóng vai trò như một chương hồi kiến trúc, nơi vật liệu hữu cơ nguyên bản tạo nên chiếc nón được giải cấu trúc và tái định hình.</p>
+                <p class="split-paragraph text-justify margin-top-20">"Nếp Làng" là sự tái hiện cấu trúc không gian thân thuộc của làng quê Việt Nam: Mái đình và Cổng làng cổ. Không gian triển lãm đóng vai trò như một chương hồi kiến trúc, nơi vật liệu hữu cơ nguyên bản tạo nên chiếc nón được giải cấu trúc.</p>
                 <div class="material-image-box margin-top-40">
-                    <img src="image/anhvatlieu.png" alt="Vật liệu" class="image-cover border-radius-8">
+                    <img src="image/anhvatlieu.png" class="image-cover border-radius-8">
                 </div>
             </div>
-            <div class="split-right-area background-image-1">
+            <div class="split-right-area bg-morph-fixed">
                 <div class="gradient-overlay-left"></div>
-                <img src="image/logo2.png" alt="Logo Nếp Làng" class="split-overlay-logo">
+                <img src="image/logo2.png" class="split-overlay-logo">
             </div>
         </section>
 
         <section class="snap-section section-gallery">
-            <div class="container">
+            <div class="container padding-top-header">
                 <div class="gallery-master-grid">
-                    <div class="grid-item item-image-large">
-                        <img src="image/anhcan01.png" alt="Ảnh cận" class="image-cover border-radius-8">
-                    </div>
+                    <div class="grid-item item-image-large"><img src="image/anhcan01.png" class="image-cover border-radius-8"></div>
                     <div class="grid-item item-text-top text-justify">
-                        <p>Bề mặt của hệ mái không bao che kín mà được tạo thành từ các màng lá lụi tước nhỏ kết hợp vải xuyên sáng, thả buông rủ nhẹ nhàng. Ngay phía dưới vòm mái, hệ thống nón lá thành phẩm được sắp đặt treo thả phân tầng. Khi người xem bước qua "cổng làng", họ như được bao bọc trong một không gian kén tơ bằng lá, trải nghiệm nhịp điệu nhấp nhô của những thớ lá lụi đan xen.</p>
+                        <p>Bề mặt của hệ mái không bao che kín mà được tạo thành từ các màng lá lụi tước nhỏ kết hợp vải xuyên sáng, thả buông rủ nhẹ nhàng. Dưới vòm mái, hệ thống nón lá được thả phân tầng. Khi bước qua "cổng làng", người xem trải nghiệm nhịp điệu nhấp nhô của những thớ lá lụi.</p>
                     </div>
-                    <div class="grid-item item-image-small-1">
-                        <img src="image/anh01.png" alt="Ảnh chi tiết 1" class="image-cover border-radius-8">
-                    </div>
-                    <div class="grid-item item-image-small-2">
-                        <img src="image/anh02.png" alt="Ảnh chi tiết 2" class="image-cover border-radius-8">
-                    </div>
+                    <div class="grid-item item-image-small-1"><img src="image/anh01.png" class="image-cover border-radius-8"></div>
+                    <div class="grid-item item-image-small-2"><img src="image/anh02.png" class="image-cover border-radius-8"></div>
 
-                    <div class="grid-item item-image-panorama">
-                        <img src="image/anh03.png" alt="Ảnh toàn cảnh" class="image-cover border-radius-8">
-                    </div>
+                    <div class="grid-item item-image-panorama"><img src="image/anh03.png" class="image-cover border-radius-8"></div>
                     <div class="grid-item item-text-bottom text-justify">
-                        <p>Nằm tại vị trí trung tâm, cốt lõi của cấu trúc cổng làng là một khối hộp thông tin bốn mặt mang tính tương tác thị giác cao. Thiết kế sử dụng giải pháp đóng - mở đầy tinh tế thông qua sự kết hợp vật liệu đương đại và truyền thống:</p>
+                        <p>Cốt lõi cấu trúc cổng làng là khối hộp thông tin bốn mặt mang tính tương tác thị giác cao:</p>
                         <ul class="gallery-list margin-top-20">
-                            <li><b>Ba mặt đóng bằng Giấy Dó xuyên sáng:</b> Đóng vai trò như các trang sử liệu chương hồi, lưu trữ nội dung về Lịch sử nón Làng Chuông. Dưới tác động của hệ thống đèn nội tại, bề mặt giấy Dó hiển thị rõ những thớ sợi tự nhiên mộc mạc, khuếch tán ánh sáng vàng dịu nhẹ.</li>
-                            <li><b>Một mặt rỗng hoàn toàn (Mặt mở):</b> Xóa bỏ ranh giới bao che, tạo góc nhìn trực diện không vật cản vào khoảng không bên trong hộp. Nơi một báu vật di sản được bảo bọc và tôn vinh bởi chính những lớp kiến thức xung quanh.</li>
+                            <li><b>Ba mặt đóng (Giấy Dó xuyên sáng):</b> Lưu trữ nội dung Lịch sử nón Làng Chuông. Ánh đèn làm nổi bật thớ sợi tự nhiên mộc mạc, khuếch tán ánh sáng vàng dịu.</li>
+                            <li><b>Một mặt mở hoàn toàn:</b> Xóa ranh giới bao che, nhìn trực diện vào báu vật di sản được bảo bọc bên trong.</li>
                         </ul>
                     </div>
                 </div>
@@ -230,24 +202,38 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.3
-            };
+            
+            // 1. Logic cho Preloader & Hiệu ứng chữ hiện lên
+            setTimeout(() => {
+                // Xóa màn hình load
+                document.body.classList.add('preloader-finish');
+            }, 2500); // 2.5 giây cho vòng quay logo
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            // 2. Observer theo dõi Section 1 để điều khiển Logo "bay"
+            const heroSection = document.getElementById('trigger-hero');
+            const observerHero = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Đang ở Section 1 -> Logo nằm giữa, to, MTCN nằm giữa
+                        document.body.classList.add('at-hero-section');
+                    } else {
+                        // Đã cuộn qua Section 1 -> Logo thu nhỏ bay lên góc, MTCN dạt sang trái
+                        document.body.classList.remove('at-hero-section');
+                    }
+                });
+            }, { threshold: 0.4 });
+            observerHero.observe(heroSection);
+
+            // 3. Observer cho các hiệu ứng Timeline vẽ line
+            const observerAnimate = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('start-animation');
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.3 });
 
-            const animatedElements = document.querySelectorAll('.animate-element');
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.animate-element').forEach(el => observerAnimate.observe(el));
         });
     </script>
 </body>
