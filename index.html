@@ -302,6 +302,80 @@
             }, { threshold: 0.2 });
             document.querySelectorAll('.animate-element').forEach(el => observerAnimate.observe(el));
         });
+
+        /* =========================================================
+               LOGIC XOAY ẢNH 3D (360 VIEWER) - MƯỢT MÀ VÀ PRELOAD
+               ========================================================= */
+            const totalFrames = 8; // Tổng số ảnh (1.png đến 8.png)
+            let currentFrame = 1;
+            let isDragging = false;
+            let startX = 0;
+            const sensitivity = 20; // Độ nhạy: di chuyển 20px thì đổi 1 frame
+            const image360 = document.getElementById('image-360');
+            const rotateWrapper = document.getElementById('rotate-360-wrapper');
+
+            // 1. Tải trước (Preload) 8 ảnh ngầm để không bị lag khi xoay
+            const preloadedImages = [];
+            for (let i = 1; i <= totalFrames; i++) {
+                const img = new Image();
+                img.src = `image/${i}.png`;
+                preloadedImages.push(img);
+            }
+
+            // 2. Xử lý logic thay đổi frame khi kéo
+            function updateFrame(deltaX) {
+                let frameShift = Math.floor(deltaX / sensitivity);
+                
+                if (frameShift !== 0) {
+                    // Nếu kéo sang trái (deltaX âm), trừ frame. Kéo sang phải, cộng frame
+                    currentFrame -= frameShift;
+                    
+                    // Vòng lặp liên tục: Nếu quá 8 thì quay về 1, nếu dưới 1 thì quay về 8
+                    if (currentFrame > totalFrames) currentFrame = 1;
+                    if (currentFrame < 1) currentFrame = totalFrames;
+                    
+                    image360.src = preloadedImages[currentFrame - 1].src;
+                    
+                    // Reset startX để tính khoảng cách cho lần kéo tiếp theo
+                    startX = isMobile ? event.touches[0].clientX : event.clientX;
+                }
+            }
+
+            // 3. Sự kiện chuột (Desktop)
+            rotateWrapper.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                rotateWrapper.style.cursor = 'grabbing';
+                // Ngăn chặn hành vi bôi đen ảnh mặc định của trình duyệt
+                e.preventDefault(); 
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                rotateWrapper.style.cursor = 'grab';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                updateFrame(deltaX);
+            });
+
+            // 4. Sự kiện chạm (Mobile)
+            rotateWrapper.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+            }, {passive: true});
+
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.touches[0].clientX - startX;
+                updateFrame(deltaX);
+            });
     </script>
 </body>
 </html>
