@@ -306,25 +306,40 @@
             document.querySelectorAll('.animate-element').forEach(el => observerAnimate.observe(el));
         });
 
-        /* =========================================================
-               LOGIC XOAY ẢNH 3D (360 VIEWER) - MƯỢT MÀ VÀ PRELOAD
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => { document.body.classList.add('preloader-finish'); }, 1200);
+
+            // LOGIC SCROLL
+            const isMobile = window.innerWidth <= 992;
+            const scrollContainer = isMobile ? window : document.getElementById('main-scroll-area');
+            
+            function handleScroll() {
+                const scrollPosition = isMobile ? window.scrollY : scrollContainer.scrollTop;
+                if (scrollPosition > 10) {
+                    document.body.classList.add('is-scrolled');
+                } else {
+                    document.body.classList.remove('is-scrolled');
+                }
+            }
+            scrollContainer.addEventListener('scroll', handleScroll);
+            handleScroll();
+
+            /* =========================================================
+               LOGIC XOAY ẢNH 3D (ĐÃ FIX: DÙNG NGƯỠNG ĐỂ XOAY CHẬM)
                ========================================================= */
-/* Tìm đoạn logic xoay ảnh trong script cũ và thay đổi thông số này: */
+            const totalFrames = 8;
+            let currentFrame = 1;
+            let isDragging = false;
+            let startX = 0;
+            
+            // ĐỘ NHẠY: Số càng lớn kéo càng chậm, dễ kiểm soát (Thử từ 40-60)
+            const sensitivity = 50; 
 
-const totalFrames = 8;
-let currentFrame = 1;
-let isDragging = false;
-let startX = 0;
+            const image360 = document.getElementById('image-360');
+            const rotateWrapper = document.getElementById('rotate-360-wrapper');
 
-// SỬA SỐ 15 THÀNH 40 ĐỂ GIẢM ĐỘ NHẠY
-const sensitivity = 1500; 
-
-const image360 = document.getElementById('image-360');
-const rotateWrapper = document.getElementById('rotate-360-wrapper');
-
-// Phần còn lại của hàm updateFrame giữ nguyên không đổi
-
-            // 1. Tải trước (Preload) 8 ảnh ngầm để không bị lag khi xoay
+            // Preload ảnh
             const preloadedImages = [];
             for (let i = 1; i <= totalFrames; i++) {
                 const img = new Image();
@@ -332,32 +347,35 @@ const rotateWrapper = document.getElementById('rotate-360-wrapper');
                 preloadedImages.push(img);
             }
 
-            // 2. Xử lý logic thay đổi frame khi kéo
-            function updateFrame(deltaX) {
-                let frameShift = Math.floor(deltaX / sensitivity);
-                
-                if (frameShift !== 0) {
-                    // Nếu kéo sang trái (deltaX âm), trừ frame. Kéo sang phải, cộng frame
-                    currentFrame -= frameShift;
-                    
-                    // Vòng lặp liên tục: Nếu quá 8 thì quay về 1, nếu dưới 1 thì quay về 8
+            // Logic xoay từng bước (Step-by-step)
+            function updateFrame(e) {
+                const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const deltaX = currentX - startX;
+
+                // Chỉ khi kéo vượt ngưỡng sensitivity mới tính là 1 bước xoay
+                if (Math.abs(deltaX) > sensitivity) {
+                    if (deltaX > 0) {
+                        currentFrame++; // Kéo phải
+                    } else {
+                        currentFrame--; // Kéo trái
+                    }
+
+                    // Reset vòng lặp
                     if (currentFrame > totalFrames) currentFrame = 1;
                     if (currentFrame < 1) currentFrame = totalFrames;
-                    
+
                     image360.src = preloadedImages[currentFrame - 1].src;
                     
-                    // Reset startX để tính khoảng cách cho lần kéo tiếp theo
-                    startX = isMobile ? event.touches[0].clientX : event.clientX;
+                    // Reset startX để bắt đầu đo bước tiếp theo
+                    startX = currentX;
                 }
             }
 
-            // 3. Sự kiện chuột (Desktop)
+            // Sự kiện Mouse
             rotateWrapper.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 startX = e.clientX;
                 rotateWrapper.style.cursor = 'grabbing';
-                // Ngăn chặn hành vi bôi đen ảnh mặc định của trình duyệt
-                e.preventDefault(); 
             });
 
             window.addEventListener('mouseup', () => {
@@ -367,25 +385,31 @@ const rotateWrapper = document.getElementById('rotate-360-wrapper');
 
             window.addEventListener('mousemove', (e) => {
                 if (!isDragging) return;
-                const deltaX = e.clientX - startX;
-                updateFrame(deltaX);
+                updateFrame(e);
             });
 
-            // 4. Sự kiện chạm (Mobile)
+            // Sự kiện Touch
             rotateWrapper.addEventListener('touchstart', (e) => {
                 isDragging = true;
                 startX = e.touches[0].clientX;
             }, {passive: true});
 
-            window.addEventListener('touchend', () => {
-                isDragging = false;
-            });
+            window.addEventListener('touchend', () => { isDragging = false; });
 
             window.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
-                const deltaX = e.touches[0].clientX - startX;
-                updateFrame(deltaX);
-            });
+                // e.preventDefault() sẽ làm mượt thao tác trên mobile
+                updateFrame(e);
+            }, {passive: false});
+
+            // Hiệu ứng vẽ timeline
+            const observerAnimate = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('start-animation');
+                });
+            }, { threshold: 0.2 });
+            document.querySelectorAll('.animate-element').forEach(el => observerAnimate.observe(el));
+        });
     </script>
 </body>
 </html>
