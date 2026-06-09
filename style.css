@@ -32,9 +32,8 @@ img { max-width: 100%; height: auto; display: block; }
 .margin-top-20 { margin-top: 20px; } .margin-bottom-20 { margin-bottom: 20px; }
 .margin-top-40 { margin-top: 40px; } .margin-bottom-40 { margin-bottom: 40px; }
 
-/* XÓA VIỀN, CHO ẢNH BUNG TỰ NHIÊN THEO TỶ LỆ GỐC */
+/* Các class hình ảnh */
 .image-fluid-natural { width: 100%; height: auto; display: block; border-radius: 8px; }
-
 .border-radius-8 { border-radius: 8px; }
 .filter-white { filter: brightness(0) invert(1); }
 
@@ -74,21 +73,16 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes fadeInLogo { 100% { opacity: 1; transform: scale(1); } }
 body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 
-/* =========================================
-   HEADER LOGO (CỐ ĐỊNH, AN TOÀN TRÊN PC)
-   ========================================= */
+/* HEADER LOGO */
 .top-navigation { position: fixed; top: 30px; left: 50px; z-index: 9998; width: 100%; pointer-events: none; }
 .nav-logos-group { display: flex; align-items: center; }
-
-/* Logo nhỏ góc trái ẩn mặc định, chỉ hiện khi cuộn (JS đổi Opacity) */
 .nav-logo-small { height: 60px; margin-right: 20px; opacity: 0; transition: opacity 0.3s ease; }
-.nav-school-info { display: flex; align-items: center; transition: transform 0.3s ease; transform: translateX(0); }
+.nav-school-info { display: flex; align-items: center; transition: transform 0.4s ease; transform: translateX(0); }
 .nav-logo-school { height: 45px; margin-right: 15px; }
 .nav-school-text { font-size: 0.7rem; font-weight: 700; line-height: 1.4; border-left: 1.5px solid var(--color-text-brown); padding-left: 15px; }
 
 /* SECTION 1: HERO */
 .section-hero { align-items: center; padding-top: 80px; }
-/* Logo to nằm tĩnh, không bay nhảy */
 .hero-main-logo { height: 320px; margin: 0 auto 30px; transition: opacity 0.3s ease; opacity: 1; }
 .hero-subtitle { font-size: 1.5rem; letter-spacing: 8px; font-weight: 700; margin-bottom: 50px; }
 .hero-description { font-size: 1.1rem; letter-spacing: 3px; line-height: 1.6; }
@@ -125,7 +119,7 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 4 & 5 */
+/* SECTION 4 & 5: CÁC LOẠI NÓN */
 .container-video { max-width: 1000px; }
 .video-container-box { position: relative; width: 100%; padding-top: 56.25%; background: var(--color-box-placeholder); border-radius: 12px; overflow: hidden; }
 .video-iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
@@ -135,29 +129,54 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 .hat-types-grid-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; }
 .hat-card { display: flex; gap: 20px; align-items: center; }
 
-/* Wrapper tự động co giãn theo chiều cao của ảnh */
-.hat-image-wrapper { flex: 0 0 40%; background: transparent; }
+/* KHÓA TỶ LỆ 5:4 CHUẨN XÁC, ẢNH KHÔNG BỊ XÉN */
+.hat-image-wrapper { 
+    flex: 0 0 40%; 
+    width: 100%;
+    aspect-ratio: 5 / 4; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background-color: var(--color-box-placeholder);
+}
+.image-5-4 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 .hat-text-wrapper { flex: 0 0 60%; font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 6 & 7: ẢNH ĐỘC LẬP */
+/* SECTION 6 & 7: ẢNH ĐỘC LẬP CHUẨN DESIGN */
 .section-split-layout { display: flex; flex-direction: row; height: 100vh; width: 100%; padding-top: 0; }
 .split-left-area { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; z-index: 3; }
 .split-content-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
 
-/* Khung nửa phải lấp đầy 50%, ảnh bên trong cover cắt giữa */
-.split-right-area { position: relative; width: 50%; height: 100vh; background-color: transparent; overflow: hidden; }
-.split-standard-image { width: 100%; height: 100%; object-fit: cover; object-position: center center; position: absolute; top: 0; left: 0; z-index: 1; }
+.split-right-area { position: relative; width: 50%; height: 100vh; background-color: var(--color-background-base); overflow: hidden;}
+.split-standard-image { width: 100%; height: 100%; object-fit: cover; object-position: center center; position: absolute; top: 0; left: 0; z-index: 1;}
 .gradient-fade-mask { position: absolute; top: 0; left: 0; width: 35%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
 .material-image-box { width: 100%; height: auto; border-radius: 8px; overflow: hidden; background: transparent; }
 
-/* SECTION 8: GALLERY */
-.gallery-master-grid { display: grid; grid-template-columns: 2.5fr 2fr 1.5fr 1.5fr; gap: 20px; align-items: start; }
-.item-image-large { grid-column: 1 / 2; grid-row: 1 / 2; }
-.item-text-top { grid-column: 2 / 3; grid-row: 1 / 2; font-size: 0.85rem; line-height: 1.5; padding: 0 10px; }
-.item-image-small-1 { grid-column: 3 / 4; grid-row: 1 / 2; }
-.item-image-small-2 { grid-column: 4 / 5; grid-row: 1 / 2; }
-.item-image-panorama { grid-column: 1 / 4; grid-row: 2 / 3; }
-.item-text-bottom { grid-column: 4 / 5; grid-row: 2 / 3; font-size: 0.85rem; line-height: 1.5; padding-left: 10px; }
+/* =========================================
+   SECTION 8: GALLERY (CHIA CỘT MỚI & CẮT ẢNH ĐỀU NHAU)
+   ========================================= */
+.gallery-master-grid { 
+    display: grid; 
+    /* Chia 4 cột tỷ lệ theo đúng layout thiết kế */
+    grid-template-columns: 3fr 2.2fr 1.8fr 1.8fr; 
+    gap: 25px; 
+    align-items: center; /* Tự động căn giữa chiều dọc cho chữ */
+}
+
+/* Các lớp cắt ảnh vuông vức chuẩn chỉnh */
+.gallery-img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
+
+.item-image-large { grid-column: 1 / 2; grid-row: 1 / 2; height: 240px; }
+.item-text-top { grid-column: 2 / 3; grid-row: 1 / 2; font-size: 0.85rem; line-height: 1.6; padding: 0 10px; }
+.item-image-small-1 { grid-column: 3 / 4; grid-row: 1 / 2; height: 240px; }
+.item-image-small-2 { grid-column: 4 / 5; grid-row: 1 / 2; height: 240px; }
+
+.item-image-panorama { grid-column: 1 / 4; grid-row: 2 / 3; height: 450px; }
+.item-text-bottom { grid-column: 4 / 5; grid-row: 2 / 3; font-size: 0.85rem; line-height: 1.6; padding-left: 10px; }
 .gallery-list { padding-left: 15px; }
 
 /* SECTION 9: FOOTER */
@@ -179,10 +198,10 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
-   TỐI ƯU MOBILE 100% ỔN ĐỊNH LAYOUT, KHÔNG LỖI ẢNH, KHÔNG BỊ CẮT XÉN
+   TỐI ƯU MOBILE (TRẢ ẢNH VỀ 100%, LƯỚT SIÊU MƯỢT)
    ========================================================================== */
 @media (max-width: 992px) {
-    /* Tắt Snap Scroll trên mobile */
+    /* Tắt Snap Scroll Mobile để chống lỗi kẹt trang */
     .snap-scroll-container { scroll-snap-type: none; overflow-y: auto; }
     .snap-section { height: auto; min-height: auto; padding: 60px 0; }
     
@@ -192,15 +211,14 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
     /* HEADER MOBILE: HIỂN THỊ CẢ 2 LOGO LUÔN TĨNH */
     .top-navigation { top: 15px; left: 15px; }
     .nav-logos-group { display: flex; flex-direction: row; align-items: center; }
-    /* Bật sáng logo nhỏ, vô hiệu hóa hiệu ứng ẩn/hiện */
-    .nav-logo-small { opacity: 1 !important; visibility: visible; height: 45px; margin-right: 15px; }
+    #nav-small-logo { opacity: 1 !important; visibility: visible; height: 45px; margin-right: 15px; }
     .nav-school-info { transform: translateX(0) !important; } 
     .nav-logo-school { height: 35px; margin-right: 10px; }
     .nav-school-text { display: block; font-size: 0.65rem; padding-left: 10px; }
 
-    /* HERO TEXT MOBILE: LOGO TO MẶC ĐỊNH */
+    /* HERO TEXT MOBILE: LOGO TO CỐ ĐỊNH, KHÔNG BAY CHỐNG ĐÈ CHỮ */
     .section-hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-    .hero-main-logo { height: 180px; margin-bottom: 20px; opacity: 1 !important; } /* Không bao giờ mờ đi */
+    .hero-main-logo { height: 180px; margin-bottom: 20px; opacity: 1 !important; } 
     .hero-subtitle { font-size: 1.3rem; letter-spacing: 5px; margin-top: 20px; margin-bottom: 20px;}
 
     /* LỊCH SỬ & QUY TRÌNH: 1 CỘT */
@@ -215,24 +233,25 @@ body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
     .timeline-node { min-width: 280px; scroll-snap-align: center; }
     .timeline-horizontal-line { top: 32px; }
     
-    /* LƯỚI NÓN: ẢNH HIỆN 100%, BUNG HẾT CỠ */
+    /* LƯỚI NÓN: GIẢI PHÓNG CHIỀU CAO ẢNH BUNG 100% GỐC TRÊN ĐIỆN THOẠI */
     .section-5-title-wrapper { margin-bottom: 30px; }
     .hat-types-grid-box { grid-template-columns: 1fr; gap: 30px; }
     .hat-card { flex-direction: column; gap: 15px; margin-bottom: 15px;}
-    .hat-image-wrapper { width: 100%; height: auto; }
+    .hat-image-wrapper { width: 100%; height: auto; aspect-ratio: unset; } /* Bỏ khóa 5:4 trên mobile */
+    .image-5-4 { object-fit: contain; } /* Hiển thị toàn bộ ảnh */
     .hat-text-wrapper { padding: 0 5px; text-align: justify; }
 
     /* SECTION 6 & 7: 1 CỘT, ẢNH TỰ DO BUNG 100% TRÊN MOBILE */
     .section-split-layout { flex-direction: column; padding-top: 50px; }
     .split-left-area { width: 100%; padding: 0 15px; margin-bottom: 20px; }
-    
-    /* Trả ảnh về tự do thay vì Fixed/Cover 50% như máy tính */
     .split-right-area { width: 100%; height: auto; background-color: transparent;}
     .split-standard-image { position: relative; width: 100%; height: auto; object-fit: contain; border-radius: 8px;} 
     .gradient-fade-mask { display: none; }
 
-    /* GALLERY 8: 1 CỘT */
+    /* GALLERY 8: 1 CỘT, ẢNH FULL */
     .gallery-master-grid { display: flex; flex-direction: column; gap: 20px; }
+    .item-image-large, .item-image-panorama, .item-image-small-1, .item-image-small-2 { width: 100%; height: auto; }
+    .gallery-img { position: relative; width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
     .item-text-top, .item-text-bottom { padding: 0 5px; }
     
     /* FOOTER */
