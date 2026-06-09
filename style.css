@@ -193,6 +193,66 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .animate-element.start-animation .step-anim:nth-child(4) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
+/* =========================================
+   SECTION 9: TRẢI NGHIỆM 3D (360 VIEWER)
+   ========================================= */
+.view-360-container {
+    background-color: var(--color-background-base); /* Giữ nền đồng nhất */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.interactive-3d-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background-color: #EBE4DA; /* Màu nền xám nâu nhạt giống hình mẫu */
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Bảo vệ khu vực kéo thả khỏi các sự kiện ngoài ý muốn */
+    user-select: none; 
+    -webkit-user-select: none;
+}
+
+.interactive-3d-wrapper:active {
+    cursor: grabbing;
+}
+
+/* Ảnh vật thể 3D nằm gọn trong box */
+.image-3d-viewer {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    pointer-events: none; /* Ngăn trình duyệt hiển thị menu tải ảnh khi kéo */
+}
+
+/* Icon con chuột hướng dẫn */
+.drag-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: auto;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.drag-icon-left {
+    left: 20px;
+}
+
+.drag-icon-right {
+    right: 20px;
+    transform: translateY(-50%) scaleX(-1); /* Lật ngược icon cho bên phải */
+}
+
 /* ==========================================================================
    TỐI ƯU MOBILE 100% ĐỘC LẬP - KHÔNG LỖI - KHÔNG XÉN ẢNH
    ========================================================================== */
