@@ -27,8 +27,8 @@
 
     <header class="top-navigation">
         <div class="nav-logos-group">
-            <img src="image/logo1.png" alt="Nếp Làng" class="nav-logo-small" id="nav-small-logo">
-            <div class="nav-school-info" id="moving-school-info">
+            <img src="image/logo1.png" alt="Nếp Làng" class="nav-logo-small">
+            <div class="nav-school-info">
                 <img src="image/logomtcn.png" alt="Đại học MTCN" class="nav-logo-school">
                 <div class="nav-school-text">
                     ĐẠI HỌC MỸ THUẬT CÔNG NGHIỆP<br>
@@ -42,7 +42,7 @@
 
         <section class="snap-section section-hero">
             <div class="hero-content-wrapper text-center">
-                <img src="image/logo1.png" alt="Logo Nếp Làng" class="hero-main-logo" id="hero-big-logo">
+                <img src="image/logo1.png" alt="Logo Nếp Làng" class="hero-main-logo">
                 <h2 class="hero-subtitle">NÓN LÀNG CHUÔNG</h2>
                 <div class="hero-description">
                     <p>KHÔNG GIAN TRIỂN LÃM</p>
@@ -165,19 +165,19 @@
                 </div>
                 <div class="hat-types-grid-box">
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon01.png" alt="Nón Lá Ba Lớp" class="image-5-4"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon01.png" alt="Nón Lá Ba Lớp" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Lá Ba Lớp:</b> Phom chóp nhọn góc 90 độ, nhẹ, thanh thoát, màu trắng lụa, dùng cho sinh hoạt và nghệ thuật.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon02.png" alt="Nón Quai Thao" class="image-5-4"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon02.png" alt="Nón Quai Thao" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Quai Thao:</b> Chiếc đĩa lớn phẳng, đường kính từ 50-60cm, thành nón cao khoảng 10cm. Ở giữa gắn lòng khuyên bằng mây đan để đội đầu.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon03.png" alt="Nón Thêu" class="image-5-4"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon03.png" alt="Nón Thêu" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Thêu Phong Cảnh:</b> Sản phẩm mỹ nghệ. Thợ thêu bông hoa sen, chim muông hoặc vẽ thủy mặc phong cảnh quê hương lên lá.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon04.png" alt="Nón Lâm Xung" class="image-5-4"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon04.png" alt="Nón Lâm Xung" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Lâm Xung:</b> Loại nón đỉnh phẳng hoặc khum nhẹ, dáng dốc theo phong cách cổ trang, thường xuất khẩu làm đèn trang trí.</p></div>
                     </div>
                 </div>
@@ -217,22 +217,14 @@
         <section class="snap-section section-gallery">
             <div class="container padding-top-fix">
                 <div class="gallery-master-grid">
-                    <div class="grid-item item-image-large">
-                        <img src="image/anhcan01.png" class="gallery-img">
-                    </div>
+                    <div class="grid-item item-image-large"><img src="image/anhcan01.png" class="gallery-img"></div>
                     <div class="grid-item item-text-top text-justify">
                         <p>Bề mặt của hệ mái không bao che kín mà được tạo thành từ các màng lá lụi tước nhỏ kết hợp vải xuyên sáng, thả buông rủ nhẹ nhàng. Dưới vòm mái, hệ thống nón lá được thả phân tầng. Khi bước qua "cổng làng", người xem trải nghiệm nhịp điệu nhấp nhô của những thớ lá lụi.</p>
                     </div>
-                    <div class="grid-item item-image-small-1">
-                        <img src="image/anh01.png" class="gallery-img">
-                    </div>
-                    <div class="grid-item item-image-small-2">
-                        <img src="image/anh02.png" class="gallery-img">
-                    </div>
+                    <div class="grid-item item-image-small-1"><img src="image/anh01.png" class="gallery-img"></div>
+                    <div class="grid-item item-image-small-2"><img src="image/anh02.png" class="gallery-img"></div>
 
-                    <div class="grid-item item-image-panorama">
-                        <img src="image/anh03.png" class="gallery-img">
-                    </div>
+                    <div class="grid-item item-image-panorama"><img src="image/anh03.png" class="gallery-img"></div>
                     <div class="grid-item item-text-bottom text-justify">
                         <p>Cốt lõi cấu trúc cổng làng là khối hộp thông tin bốn mặt mang tính tương tác thị giác cao:</p>
                         <ul class="gallery-list margin-top-20">
@@ -263,27 +255,18 @@
         document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => { document.body.classList.add('preloader-finish'); }, 1200);
 
-            // LOGIC SCROLL HIỂN THỊ LOGO AN TOÀN
+            // LOGIC SCROLL TOÀN DIỆN
             const isMobile = window.innerWidth <= 992;
             const scrollContainer = isMobile ? window : document.getElementById('main-scroll-area');
-            const bigLogo = document.getElementById('hero-big-logo');
-            const smallLogo = document.getElementById('nav-small-logo');
-            const schoolInfo = document.getElementById('moving-school-info');
             
             function handleScroll() {
                 const scrollPosition = isMobile ? window.scrollY : scrollContainer.scrollTop;
-                
-                if (!isMobile) {
-                    if (scrollPosition > 50) {
-                        if(bigLogo) bigLogo.style.opacity = '0';
-                        if(smallLogo) smallLogo.style.opacity = '1';
-                        if(schoolInfo) schoolInfo.style.transform = 'translateX(100px)';
-                    } else {
-                        if(bigLogo) bigLogo.style.opacity = '1';
-                        if(smallLogo) smallLogo.style.opacity = '0';
-                        if(schoolInfo) schoolInfo.style.transform = 'translateX(0)';
-                    }
-                } 
+                // Nhích > 10px thì thêm class is-scrolled vào body
+                if (scrollPosition > 10) {
+                    document.body.classList.add('is-scrolled');
+                } else {
+                    document.body.classList.remove('is-scrolled');
+                }
             }
 
             scrollContainer.addEventListener('scroll', handleScroll);
