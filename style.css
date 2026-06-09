@@ -32,7 +32,8 @@ img { max-width: 100%; height: auto; display: block; }
 .margin-top-20 { margin-top: 20px; } .margin-bottom-20 { margin-bottom: 20px; }
 .margin-top-40 { margin-top: 40px; } .margin-bottom-40 { margin-bottom: 40px; }
 
-.image-free-scale { width: 100%; height: auto; display: block; }
+/* Thay thế hoàn toàn cách render ảnh: Luôn giữ nguyên tỷ lệ, không cắt gọt */
+.image-contain-full { width: 100%; height: 100%; object-fit: contain; display: block; }
 .border-radius-8 { border-radius: 8px; }
 .filter-white { filter: brightness(0) invert(1); }
 
@@ -72,36 +73,27 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes fadeInLogo { 100% { opacity: 1; transform: scale(1); } }
 body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 
+
 /* =========================================
    HEADER LOGO (ỔN ĐỊNH TUYỆT ĐỐI)
    ========================================= */
-.top-navigation { position: fixed; top: 30px; left: 50px; z-index: 9998; pointer-events: none; }
+.top-navigation { position: fixed; top: 30px; left: 50px; z-index: 9998; width: 100%; pointer-events: none; }
+.nav-logos-group { display: flex; align-items: center; }
+
+/* Logo nhỏ ẩn mặc định, dùng transition nhẹ nhàng */
+.nav-logo-small { height: 60px; margin-right: 20px; opacity: 0; transition: opacity 0.3s ease; }
+/* Logo MTCN và chữ */
 .nav-school-info { display: flex; align-items: center; transition: transform 0.4s ease; transform: translateX(0); }
 .nav-logo-school { height: 45px; margin-right: 15px; }
 .nav-school-text { font-size: 0.7rem; font-weight: 700; line-height: 1.4; border-left: 1.5px solid var(--color-text-brown); padding-left: 15px; }
 
-/* Logo bay riêng lẻ (Chỉ cho bản Desktop) */
-#flying-logo-brand {
-    position: fixed; z-index: 10000;
-    transition: top 0.4s ease-out, left 0.4s ease-out, transform 0.4s ease-out, height 0.4s ease-out, opacity 0.4s;
-    pointer-events: none;
-}
-body:not(.is-scrolled) #flying-logo-brand {
-    top: 45%; left: 50%; transform: translate(-50%, -50%); height: 320px; opacity: 1;
-}
-body.is-scrolled #flying-logo-brand {
-    top: 30px; left: 50px; transform: translate(0, 0); height: 60px; opacity: 1;
-}
-/* Kéo Header MTCN sang nhường chỗ cho Logo góc */
-body.is-scrolled .nav-school-info { transform: translateX(180px); }
 
 /* SECTION 1: HERO */
-.section-hero { align-items: center; padding-top: 100px; }
-/* Tạo khoảng trống tàng hình tránh Logo đè chữ */
-.hero-subtitle { opacity: 0; font-size: 1.5rem; letter-spacing: 8px; font-weight: 700; margin-top: 320px; margin-bottom: 50px; transition: opacity 0.8s; }
-.hero-description { opacity: 0; font-size: 1.1rem; letter-spacing: 3px; line-height: 1.6; transition: opacity 0.8s; }
-body.preloader-finish:not(.is-scrolled) .hero-subtitle { opacity: 1; transition-delay: 0.3s; }
-body.preloader-finish:not(.is-scrolled) .hero-description { opacity: 1; transition-delay: 0.5s; }
+.section-hero { align-items: center; padding-top: 80px; }
+/* Logo to hiển thị mặc định */
+.hero-main-logo { height: 300px; margin: 0 auto 30px; transition: opacity 0.3s ease; opacity: 1; }
+.hero-subtitle { font-size: 1.5rem; letter-spacing: 8px; font-weight: 700; margin-bottom: 50px; }
+.hero-description { font-size: 1.1rem; letter-spacing: 3px; line-height: 1.6; }
 
 /* SECTION 2: TIMELINE */
 .history-top-layout { display: flex; gap: 60px; align-items: center; margin-bottom: 40px; }
@@ -135,7 +127,7 @@ body.preloader-finish:not(.is-scrolled) .hero-description { opacity: 1; transiti
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 4 & 5 */
+/* SECTION 4 & 5: CÁC LOẠI NÓN */
 .container-video { max-width: 1000px; }
 .video-container-box { position: relative; width: 100%; padding-top: 56.25%; background: var(--color-box-placeholder); border-radius: 12px; }
 .video-iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
@@ -144,24 +136,33 @@ body.preloader-finish:not(.is-scrolled) .hero-description { opacity: 1; transiti
 .section-5-title-wrapper { margin-bottom: 60px; }
 .hat-types-grid-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; }
 .hat-card { display: flex; gap: 20px; align-items: center; }
-/* KHÓA TỶ LỆ 5:4 BẢO TOÀN TRÊN MỌI THIẾT BỊ */
-.hat-image-wrapper { flex: 0 0 40%; aspect-ratio: 5 / 4; border-radius: 8px; overflow: hidden; background-color: var(--color-box-placeholder);}
-.image-5-4 { width: 100%; height: 100%; object-fit: cover; }
+
+/* KHÓA CỨNG CHIỀU CAO CHO TỶ LỆ 5:4 */
+.hat-image-wrapper { 
+    flex: 0 0 40%; 
+    height: 180px; /* Khóa cao cố định để không bị phình to */
+    border-radius: 8px; 
+    overflow: hidden; 
+    background-color: var(--color-background-base);
+}
 .hat-text-wrapper { flex: 0 0 60%; font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 6 & 7: ẢNH THẬT, CHỐNG CẮT MẤT NỘI DUNG */
+/* SECTION 6 & 7: ẢNH THẬT NỬA MÀN HÌNH CHUẨN DESIGN */
 .section-split-layout { display: flex; flex-direction: row; height: 100vh; width: 100%; padding-top: 0; }
 .split-left-area { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; z-index: 3; }
 .split-content-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
-.split-right-area { position: relative; width: 50%; height: 100vh; background-color: var(--color-background-base); overflow: hidden;}
 
-/* Ảnh thật chèn trực tiếp, lấp đầy 50% màn hình, neo tâm giữa */
-.split-real-image { width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute; top: 0; left: 0; z-index: 1;}
-.gradient-fade-mask { position: absolute; top: 0; left: 0; width: 30%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
-.material-image-box { width: 100%; height: auto; border-radius: 8px; overflow: hidden; }
+.split-right-area { position: relative; width: 50%; height: 100vh; background-color: var(--color-background-base); overflow: hidden;}
+.split-real-image { width: 100%; height: 100%; object-fit: cover; object-position: center center; position: absolute; top: 0; left: 0; z-index: 1;}
+.gradient-fade-mask { position: absolute; top: 0; left: 0; width: 35%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
+
+/* Giới hạn chiều cao cho ảnh vật liệu Section 7 */
+.material-image-box { width: 100%; height: 180px; border-radius: 8px; overflow: hidden; background-color: var(--color-background-base); }
 
 /* SECTION 8: GALLERY */
 .gallery-master-grid { display: grid; grid-template-columns: 2.5fr 2fr 1.5fr 1.5fr; gap: 20px; align-items: start; }
+/* Mở khóa ảnh hiển thị tự nhiên */
+.grid-item { background-color: transparent; }
 .item-image-large { grid-column: 1 / 2; grid-row: 1 / 2; }
 .item-text-top { grid-column: 2 / 3; grid-row: 1 / 2; font-size: 0.85rem; line-height: 1.5; padding: 0 10px; }
 .item-image-small-1 { grid-column: 3 / 4; grid-row: 1 / 2; }
@@ -189,66 +190,71 @@ body.preloader-finish:not(.is-scrolled) .hero-description { opacity: 1; transiti
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
-   TỐI ƯU MOBILE (GỌN GÀNG, KHÔNG LỖI ĐÈ, TỶ LỆ CHUẨN)
+   TỐI ƯU MOBILE (ỔN ĐỊNH LAYOUT, KHÔNG LỖI ẢNH)
    ========================================================================== */
 @media (max-width: 992px) {
-    /* Tắt Snap Scroll để đọc văn bản mượt mà, gỡ bỏ 100vh gây khoảng trắng */
+    /* Tắt Snap Scroll để scroll mượt mà như đọc báo */
     .snap-scroll-container { scroll-snap-type: none; overflow-y: auto; }
-    .snap-section { height: auto; min-height: auto; padding: 50px 0; }
+    .snap-section { height: auto; min-height: 100vh; padding: 70px 0; }
     
     .container { padding: 0 15px; }
     .padding-top-fix { padding-top: 10px; }
 
-    /* HEADER MOBILE: GỌN GÀNG, ỔN ĐỊNH */
-    /* Ẩn logo bay đi vì trên mobile rất dễ bị chập chờn */
-    #flying-logo-brand { display: none; }
+    /* HEADER MOBILE: HAI LOGO ỔN ĐỊNH */
     .top-navigation { top: 15px; left: 15px; }
     .nav-logos-group { display: flex; flex-direction: row; align-items: center; }
-    #nav-small-logo { opacity: 1; visibility: visible; height: 45px; margin-right: 15px; } /* Luôn hiện logo nhỏ */
+    #nav-small-logo { height: 45px; margin-right: 15px; }
     .nav-school-info { transform: translateX(0) !important; } 
-    .nav-logo-school { height: 30px; margin-right: 10px; }
-    .nav-school-text { font-size: 0.55rem; padding-left: 10px; }
+    .nav-logo-school { height: 35px; margin-right: 10px; }
+    .nav-school-text { font-size: 0.65rem; padding-left: 10px; }
 
-    /* HERO TEXT MOBILE: CĂN DƯỚI ĐÁY */
+    /* HERO TEXT MOBILE: LOGO TO MẶC ĐỊNH */
     .section-hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-    .hero-main-logo { height: 180px; margin-top: 15vh; opacity: 1 !important; transition: none; }
-    .hero-subtitle { margin-top: 40px; margin-bottom: 20px; font-size: 1.3rem; letter-spacing: 5px; }
+    .hero-main-logo { height: 180px; margin-bottom: 20px; }
+    .hero-subtitle { font-size: 1.3rem; letter-spacing: 5px; margin-top: 20px; margin-bottom: 20px;}
 
-    /* BỐ CỤC LỊCH SỬ & QUY TRÌNH: 1 CỘT, GIẢM MARGIN */
+    /* LỊCH SỬ & QUY TRÌNH: 1 CỘT, GIẢM KHOẢNG TRỐNG */
     .history-top-layout, .process-layout { flex-direction: column; gap: 20px; margin-bottom: 10px;}
     .history-title-box, .process-left-column { width: 100%; text-align: center; }
     .history-text-box, .process-right-column { width: 100%; padding: 0 5px; }
     .process-right-column { margin-top: 10px; }
     .vertical-straight-line { left: 24px; } 
     
-    /* TIMELINE LƯỚT CHẠM */
-    .timeline-nodes-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; gap: 15px; }
-    .timeline-node { min-width: 260px; scroll-snap-align: center; }
+    /* TIMELINE LƯỚT NGANG */
+    .timeline-nodes-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; gap: 20px; }
+    .timeline-node { min-width: 280px; scroll-snap-align: center; }
     .timeline-horizontal-line { top: 32px; }
     
-    /* LƯỚI NÓN (CHỐT 5:4) */
+    /* LƯỚI NÓN: ẢNH HIỆN 100%, KHÔNG CẮT */
     .section-5-title-wrapper { margin-bottom: 20px; }
-    .hat-types-grid-box { grid-template-columns: 1fr; gap: 20px; }
-    .hat-card { flex-direction: column; gap: 15px; margin-bottom: 10px;}
-    .hat-image-wrapper { width: 100%; aspect-ratio: 5 / 4; } /* Tỷ lệ 5:4 hoàn hảo */
+    .hat-types-grid-box { grid-template-columns: 1fr; gap: 30px; }
+    .hat-card { flex-direction: column; gap: 10px; margin-bottom: 15px;}
+    .hat-image-wrapper { width: 100%; height: auto; } /* Mở khóa height trên mobile */
     .hat-text-wrapper { padding: 0 5px; text-align: justify; }
 
-    /* SECTION 6 & 7: ẢNH HIỂN THỊ ĐẦY ĐỦ */
-    .section-split-layout { flex-direction: column; padding-top: 30px; }
-    .split-left-area { width: 100%; padding: 0 10px; margin-bottom: 20px; }
-    .split-right-area { width: 100%; height: auto; background-color: transparent;}
-    .split-real-image { position: relative; width: 100%; height: auto; object-fit: contain; border-radius: 8px;} /* Hiện đủ 100% ảnh */
-    .gradient-fade-mask { display: none; } /* Bỏ gradient */
+    /* SECTION 6 & 7: 1 CỘT */
+    .section-split-layout { flex-direction: column; height: auto; min-height: auto; padding-top: 50px; }
+    .split-left-area { width: 100%; padding: 0 15px; margin-bottom: 20px; }
+    
+    .split-right-area { width: 100%; height: 35vh; background-color: transparent;}
+    .split-real-image { position: relative; width: 100%; height: 100%; object-fit: contain; border-radius: 8px;} /* Ảnh không cắt trên mobile */
+    .gradient-fade-mask { display: none; }
+    .material-image-box { height: auto; }
 
-    /* GALLERY 8: 1 CỘT LIỀN MẠCH */
+    /* GALLERY 8: 1 CỘT */
     .gallery-master-grid { display: flex; flex-direction: column; gap: 15px; }
-    .item-image-large, .item-image-panorama, .item-image-small-1, .item-image-small-2 { width: 100%; height: auto; }
     .item-text-top, .item-text-bottom { padding: 0 5px; }
     
     /* FOOTER */
-    .site-footer { padding: 30px 0; }
-    .footer-logos { flex-direction: column; gap: 15px; margin-bottom: 15px;}
-    .footer-logo-mtcn { height: 40px; }
-    .footer-logo-neplang { height: 50px; }
+    .site-footer { padding: 40px 0; }
+    .footer-logos { flex-direction: column; gap: 20px; margin-bottom: 20px;}
+    .footer-logo-mtcn { height: 45px; }
+    .footer-logo-neplang { height: 60px; }
     .footer-info { font-size: 0.8rem; padding: 0 10px; }
+}
+
+@media (max-width: 480px) {
+    .nav-school-text { font-size: 0.55rem; } 
+    .svg-title-xlarge, .svg-title-medium { max-width: 240px; }
+    .timeline-node { min-width: 260px; }
 }
