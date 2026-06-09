@@ -194,51 +194,50 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
 /* =========================================
-   SECTION 9: TRẢI NGHIỆM 3D (ĐÃ FIX LAYOUT)
+   SECTION 9: TRẢI NGHIỆM 3D (CẬP NHẬT MỚI)
    ========================================= */
 
-.section-split-layout {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between; /* Giãn cách đều */
-    height: 100vh;
-    padding: 0 50px;
-    gap: 30px;
-}
-
-/* Tiêu đề & Hướng dẫn */
+/* Tiêu đề SVG mới */
 .svg-title-large {
     width: 100%;
-    max-width: 350px; 
-    margin-bottom: 20px;
+    max-width: 400px; /* Tăng kích thước title */
+    margin-bottom: 25px;
+    display: block;
 }
 
+/* Hướng dẫn font Manrope */
 .instruction-text {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: var(--color-text-brown);
+    text-align: center;
     line-height: 1.6;
-    max-width: 300px;
-    margin: 20px auto 0 auto;
+    margin: 0 auto;
+    max-width: 350px;
 }
 
-/* Khung chứa ảnh 3D - Đã giới hạn kích thước */
+/* Vùng chứa 3D Viewer */
+.view-360-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
 .interactive-3d-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 700px; /* Giới hạn độ rộng để không chiếm hết màn hình */
-    height: auto;
-    max-height: 60vh; /* Giới hạn chiều cao */
+    width: 95%;
+    max-width: 950px; /* Tăng kích thước ảnh */
     background-color: transparent; 
-    border-radius: 30px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: grab;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    user-select: none; 
+    -webkit-user-select: none;
 }
 
 .image-3d-viewer {
@@ -249,25 +248,24 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
     pointer-events: none;
 }
 
-/* Icon con chuột - ĐÃ FIX KÍCH THƯỚC */
 .drag-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px !important; /* Ép kích thước nhỏ lại */
-    height: auto !important;
-    opacity: 0.6;
+    width: 40px;
+    height: auto;
+    opacity: 0.7;
     pointer-events: none;
-    z-index: 10;
 }
 .drag-icon-left { left: 20px; }
 .drag-icon-right { right: 20px; transform: translateY(-50%) scaleX(-1); }
 
-/* TỐI ƯU MOBILE */
+/* Tối ưu mobile cho Section 9 */
 @media (max-width: 992px) {
-    .section-split-layout { flex-direction: column; padding: 50px 20px; }
-    .interactive-3d-wrapper { width: 100%; max-width: 100%; }
-    .drag-icon { width: 35px !important; }
+    .svg-title-large { max-width: 280px; }
+    .instruction-text { font-size: 1rem; }
+    .view-360-container { width: 100%; padding: 0 10px; }
+    .drag-icon { width: 30px; }
 }
 
 /* ==========================================================================
