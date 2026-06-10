@@ -152,7 +152,8 @@
         <section class="snap-section section-video">
             <div class="container container-video">
                 <video class="local-video-player" controls playsinline loop preload="auto">
-                    <source src="image/video.mp4" type="video/mp4">
+                    <source src="image/video_hevc.mp4" type="video/mp4; codecs=hvc1">
+                    <source src="image/video_chuẩn.mp4" type="video/mp4">
                     Trình duyệt của bạn không hỗ trợ hiển thị video này.
                 </video>
             </div>
@@ -165,19 +166,19 @@
                 </div>
                 <div class="hat-types-grid-box">
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon01.png" alt="Nón Lá Ba Lớp" class="image-free-scale"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon01.png" alt="Nón Lá Ba Lớp" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Lá Ba Lớp:</b> Phom chóp nhọn góc 90 độ, nhẹ, thanh thoát, màu trắng lụa, dùng cho sinh hoạt và nghệ thuật.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon02.png" alt="Nón Quai Thao" class="image-free-scale"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon02.png" alt="Nón Quai Thao" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Quai Thao:</b> Chiếc đĩa lớn phẳng, đường kính từ 50-60cm, thành nón cao khoảng 10cm. Ở giữa gắn lòng khuyên bằng mây đan để đội đầu.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon03.png" alt="Nón Thêu" class="image-free-scale"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon03.png" alt="Nón Thêu" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Thêu Phong Cảnh:</b> Sản phẩm mỹ nghệ. Thợ thêu bông hoa sen, chim muông hoặc vẽ thủy mặc phong cảnh quê hương lên lá.</p></div>
                     </div>
                     <div class="hat-card">
-                        <div class="hat-image-wrapper"><img src="image/anhnon04.png" alt="Nón Lâm Xung" class="image-free-scale"></div>
+                        <div class="hat-image-wrapper"><img src="image/anhnon04.png" alt="Nón Lâm Xung" class="image-fluid-natural"></div>
                         <div class="hat-text-wrapper"><p><b>Nón Lâm Xung:</b> Loại nón đỉnh phẳng hoặc khum nhẹ, dáng dốc theo phong cách cổ trang, thường xuất khẩu làm đèn trang trí.</p></div>
                     </div>
                 </div>
@@ -204,7 +205,7 @@
                     <p class="text-justify">Tên gọi "Nếp Làng" mang tầng nghĩa kép: vừa là "nếp sống", "nếp nghĩ" mộc mạc, quy củ của làng nghề truyền thống; vừa là những đường "gấp nếp" hình học đặc trưng trên những thớ lá nón.</p>
                     <p class="text-justify margin-top-20">"Nếp Làng" là sự tái hiện cấu trúc không gian thân thuộc của làng quê Việt Nam: Mái đình và Cổng làng cổ. Không gian triển lãm đóng vai trò như một chương hồi kiến trúc.</p>
                     <div class="material-image-box margin-top-40">
-                        <img src="image/anhvatlieu.png" class="image-free-scale border-radius-8" alt="Vật liệu">
+                        <img src="image/anhvatlieu.png" class="image-fluid-natural border-radius-8" alt="Vật liệu">
                     </div>
                 </div>
             </div>
@@ -236,29 +237,23 @@
             </div>
         </section>
 
-      <!-- ================= SECTION 9: TRẢI NGHIỆM 3D (XOAY 360) ================= -->
         <section class="snap-section section-split-layout">
             <div class="split-left-area text-center">
                 <div class="split-content-wrapper">
-                    <!-- Title SVG to và căn giữa -->
                     <img src="image/title4.svg" class="svg-title-large margin-auto" alt="Trải nghiệm Không gian trưng bày">
-                    
-                    <!-- Hướng dẫn font Manrope -->
-                    <p class="instruction-text">
-                        XOAY / LƯỚT ẢNH ĐỂ XEM CÁC MẶT<br>CỦA KHÔNG GIAN TRƯNG BÀY
-                    </p>
+                    <p class="instruction-text">XOAY / LƯỚT ẢNH ĐỂ XEM CÁC MẶT CỦA KHÔNG GIAN TRƯNG BÀY</p>
                 </div>
             </div>
             
             <div class="split-right-area view-360-container">
                 <div class="interactive-3d-wrapper" id="rotate-360-wrapper">
-                    <img src="image/icons.svg" class="drag-icon drag-icon-left" alt="Kéo sang trái">
-                    <img src="image/icons.svg" class="drag-icon drag-icon-right" alt="Kéo sang phải">
+                    <img src="image/icons.svg" class="drag-icon drag-icon-left" alt="Kéo">
+                    <img src="image/icons.svg" class="drag-icon drag-icon-right" alt="Kéo">
                     <img src="image/1.png" class="image-3d-viewer" id="image-360" alt="Góc không gian 3D">
                 </div>
             </div>
         </section>
-        
+
         <section class="snap-section site-footer">
             <div class="container footer-content-wrapper">
                 <div class="footer-logos">
@@ -266,8 +261,8 @@
                     <img src="image/logo2.png" alt="Nếp Làng" class="footer-logo-neplang">
                 </div>
                 <div class="footer-info text-center">
-                    <p>Trang web giới thiệu sản phẩm làng nghề - Nón Làng Chuông do lớp <b>TC22NtA</b> - Đại học Mỹ Thuật Công Nghiệp thực hiện triển khai trong khuôn khổ <b>Đồ án không gian triển lãm</b> kết hợp chương trình <b>Lễ hội Thiết kế Sáng Tạo Hà Nội</b>.</p>
-                    <p class="margin-top-20">Các hình ảnh không gian trưng bày thuộc sở hữu của lớp TC22NtA và trường Đại học Mỹ Thuật Công Nghiệp, dưới sự hướng dẫn của <b>GVHD Vũ Ngọc Hà</b>.</p>
+                    <p>Trang web giới thiệu sản phẩm làng nghề - Nón Làng Chuông do lớp <b>TC22NtA</b> - Đại học Mỹ Thuật Công Nghiệp thực hiện triển khai trong khuôn khổ chương trình Sáng Tạo Hà Nội.</p>
+                    <p class="margin-top-20">Các hình ảnh không gian trưng bày thuộc sở hữu của TC22NtA và trường Đại học Mỹ Thuật Công Nghiệp, dưới sự hướng dẫn của <b>GVHD Vũ Ngọc Hà</b>.</p>
                 </div>
             </div>
         </section>
@@ -278,24 +273,44 @@
         document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => { document.body.classList.add('preloader-finish'); }, 1200);
 
-            // LOGIC SCROLL: BẬT TẮT LOGO KHI CUỘN 
             const isMobile = window.innerWidth <= 992;
             const scrollContainer = isMobile ? window : document.getElementById('main-scroll-area');
             
+            // 1. LOGIC ẨN/HIỆN LOGO CHUẨN XÁC KHI SCROLL
             function handleScroll() {
                 const scrollPosition = isMobile ? window.scrollY : scrollContainer.scrollTop;
-                // Chỉ cần cuộn > 10px là kích hoạt chuyển đổi Logo ngay lập tức
                 if (scrollPosition > 10) {
                     document.body.classList.add('is-scrolled');
                 } else {
                     document.body.classList.remove('is-scrolled');
                 }
             }
-
             scrollContainer.addEventListener('scroll', handleScroll);
             handleScroll();
 
-            // Hiệu ứng vẽ timeline
+            // 2. TIMELINE AUTO-SCROLL (TRƯỢT NGANG TỰ ĐỘNG SIÊU MƯỢT TRÊN MOBILE)
+            const timelineGrid = document.querySelector('.timeline-nodes-grid');
+            if (isMobile && timelineGrid) {
+                // Tắt bám dính (snap) để ảnh trượt mượt từng pixel
+                timelineGrid.style.scrollSnapType = 'none';
+                
+                let autoScrollTimeline = setInterval(() => {
+                    timelineGrid.scrollLeft += 1; // Tốc độ trượt (1px)
+                    
+                    // Lặp lại từ đầu nếu đã chạy tới cuối
+                    if (timelineGrid.scrollLeft + timelineGrid.clientWidth >= timelineGrid.scrollWidth - 1) {
+                        timelineGrid.scrollLeft = 0;
+                    }
+                }, 30); // Cứ 30ms nhích 1 pixel
+
+                // Khi chạm tay vào: Dừng cuộn tự động và trả lại hiệu ứng snap để tự vuốt
+                timelineGrid.addEventListener('touchstart', () => {
+                    clearInterval(autoScrollTimeline);
+                    timelineGrid.style.scrollSnapType = 'x mandatory';
+                }, { passive: true });
+            }
+
+            // 3. HIỆU ỨNG VẼ ANIMATION TIMELINE
             const observerAnimate = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -304,89 +319,77 @@
                 });
             }, { threshold: 0.2 });
             document.querySelectorAll('.animate-element').forEach(el => observerAnimate.observe(el));
+
+            // 4. LOGIC XOAY ẢNH 3D (ĐÃ FIX: XOAY CHẬM, KIỂM SOÁT BẰNG NGƯỠNG THRESHOLD)
+            const totalFrames = 8;
+            let currentFrame = 1;
+            let isDragging = false;
+            let startX = 0;
+            const sensitivity = 40; // Kéo 40px mới nhảy 1 ảnh (Tăng lên 60 nếu muốn chậm hơn nữa)
+
+            const image360 = document.getElementById('image-360');
+            const rotateWrapper = document.getElementById('rotate-360-wrapper');
+
+            if (rotateWrapper && image360) {
+                // Preload ngầm
+                const preloadedImages = [];
+                for (let i = 1; i <= totalFrames; i++) {
+                    const img = new Image();
+                    img.src = `image/${i}.png`;
+                    preloadedImages.push(img);
+                }
+
+                function updateFrame(currentX) {
+                    const deltaX = currentX - startX;
+                    // Phải kéo đủ khoảng cách "sensitivity" ảnh mới chịu xoay 1 nhịp
+                    if (Math.abs(deltaX) >= sensitivity) {
+                        if (deltaX > 0) currentFrame--; 
+                        else currentFrame++; 
+
+                        if (currentFrame > totalFrames) currentFrame = 1;
+                        if (currentFrame < 1) currentFrame = totalFrames;
+
+                        image360.src = preloadedImages[currentFrame - 1].src;
+                        // Chốt lại mốc đo cho nhịp xoay kế tiếp
+                        startX = currentX;
+                    }
+                }
+
+                // Desktop Drag
+                rotateWrapper.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    rotateWrapper.style.cursor = 'grabbing';
+                    e.preventDefault(); 
+                });
+
+                window.addEventListener('mouseup', () => {
+                    isDragging = false;
+                    rotateWrapper.style.cursor = 'grab';
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    updateFrame(e.clientX);
+                });
+
+                // Mobile Touch
+                rotateWrapper.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].clientX;
+                }, {passive: true});
+
+                window.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+
+                rotateWrapper.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    if (e.cancelable) e.preventDefault(); // Chống cuộn web dọc khi đang xoay ảnh
+                    updateFrame(e.touches[0].clientX);
+                }, {passive: false});
+            }
         });
-
-/* =========================================================
-   LOGIC XOAY ẢNH 3D (360 VIEWER) - MƯỢT MÀ VÀ CHỐNG TRÔI ẢNH
-   ========================================================= */
-const totalFrames = 8;
-let currentFrame = 1;
-let isDragging = false;
-let startX = 0;
-
-// ĐỘ NHẠY XOAY: Số càng lớn kéo càng chậm và từ từ. 
-// Khuyên dùng từ 40 đến 60 là vừa khít tầm tay lướt.
-const sensitivity = 40; 
-
-const image360 = document.getElementById('image-360');
-const rotateWrapper = document.getElementById('rotate-360-wrapper');
-
-// 1. Tải trước (Preload) ngầm 8 ảnh để khi xoay không bị hiện tượng trễ/nháy trắng
-const preloadedImages = [];
-for (let i = 1; i <= totalFrames; i++) {
-    const img = new Image();
-    img.src = `image/${i}.png`;
-    preloadedImages.push(img);
-}
-
-// 2. Thuật toán kiểm soát chuyển động góc theo khấc (Step-by-step)
-function updateFrame(currentX) {
-    const deltaX = currentX - startX;
-
-    // Chỉ chuyển góc nhìn khi khoảng cách kéo chuột vượt qua cấu hình sensitivity
-    if (Math.abs(deltaX) >= sensitivity) {
-        if (deltaX > 0) {
-            currentFrame--; // Kéo sang phải: Xoay ngược chiều
-        } else {
-            currentFrame++; // Kéo sang trái: Xoay thuận chiều
-        }
-
-        // Khóa vòng lặp tuần hoàn kín từ góc 1 đến góc 8
-        if (currentFrame > totalFrames) currentFrame = 1;
-        if (currentFrame < 1) currentFrame = totalFrames;
-
-        // Thay ảnh từ mảng đã tải trước siêu tốc
-        image360.src = preloadedImages[currentFrame - 1].src;
-
-        // Đóng băng tọa độ tại điểm vừa nhảy góc để đo tiếp khoảng cách cho góc tiếp theo
-        startX = currentX;
-    }
-}
-
-// 3. Xử lý sự kiện trên Máy tính (Chuột)
-rotateWrapper.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
-    rotateWrapper.style.cursor = 'grabbing';
-    e.preventDefault(); // Chống kích hoạt lệnh bôi đen lựa chọn ảnh của trình duyệt
-});
-
-window.addEventListener('mouseup', () => {
-    isDragging = false;
-    if (rotateWrapper) rotateWrapper.style.cursor = 'grab';
-});
-
-window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    updateFrame(e.clientX);
-});
-
-// 4. Xử lý sự kiện trên Điện thoại (Cảm ứng vuốt chạm)
-rotateWrapper.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].clientX;
-}, {passive: true});
-
-window.addEventListener('touchend', () => {
-    isDragging = false;
-});
-
-rotateWrapper.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    // Chặn cuộn trang web ngoài ý muốn khi ngón tay đang thao tác xoay mô hình 3D
-    if (e.cancelable) e.preventDefault(); 
-    updateFrame(e.touches[0].clientX);
-}, {passive: false});
     </script>
 </body>
 </html>
