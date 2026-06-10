@@ -280,23 +280,17 @@
     </main>
 
     <script>
-        // =========================================================
-        // PRELOADER THỰC TẾ & KHỞI TẠO HỆ THỐNG
-        // =========================================================
-        
-        // 1. Tắt màn hình chờ khi toàn bộ cấu trúc web ĐÃ LOAD XONG
-        window.addEventListener('load', function() {
-            document.body.classList.add('preloader-finish');
-        });
-        
-        // Backup: Nếu mạng người dùng quá yếu, vẫn mở trang sau 3 giây để tránh treo web
-        setTimeout(() => { document.body.classList.add('preloader-finish'); }, 3000);
-
         document.addEventListener("DOMContentLoaded", function() {
+            // Tắt Preloader màn hình chờ khi hệ thống load xong
+            window.addEventListener('load', function() {
+                document.body.classList.add('preloader-finish');
+            });
+            setTimeout(() => { document.body.classList.add('preloader-finish'); }, 3000);
+
             const isMobile = window.innerWidth <= 992;
             const scrollContainer = isMobile ? window : document.getElementById('main-scroll-area');
             
-            // 2. LOGIC ẨN/HIỆN LOGO 
+            // 1. LOGIC ẨN/HIỆN LOGO KHU VỰC HEADER KHI CUỘN TRANG
             function handleScroll() {
                 const scrollPosition = isMobile ? window.scrollY : scrollContainer.scrollTop;
                 if (scrollPosition > 10) {
@@ -308,19 +302,26 @@
             scrollContainer.addEventListener('scroll', handleScroll);
             handleScroll();
 
-            // 3. TIMELINE AUTO-SCROLL
+
+            // 2. TIMELINE AUTO-SCROLL (SỬA LỖI TỰ ĐỘNG CHẠY & KHỬ XUNG ĐỘT QUÁN TÍNH)
             const timelineGrid = document.querySelector('.timeline-nodes-grid');
             let autoScrollTimeline;
             let scrollTimeout;
             let isUserInteracting = false;
+            let isAutoScrolling = false; // Cờ hiệu phân biệt tác vụ hệ thống và người dùng
 
             function startAutoScroll() {
                 if (!isMobile || !timelineGrid) return;
                 if (autoScrollTimeline) clearInterval(autoScrollTimeline);
+                
+                // Tắt tạm hiệu ứng bám dính (snap) để thanh timeline trượt mượt từng pixel
                 timelineGrid.style.scrollSnapType = 'none';
                 
                 autoScrollTimeline = setInterval(() => {
-                    timelineGrid.scrollLeft += 1; 
+                    isAutoScrolling = true; // Đánh dấu đây là hành động cuộn do hệ thống chạy
+                    timelineGrid.scrollLeft += 1; // Tốc độ trượt tự động (1px)
+                    
+                    // Vòng lặp tuần hoàn khi trượt đến mốc cuối cùng
                     if (timelineGrid.scrollLeft + timelineGrid.clientWidth >= timelineGrid.scrollWidth - 1) {
                         timelineGrid.scrollLeft = 0;
                     }
@@ -328,29 +329,44 @@
             }
 
             if (isMobile && timelineGrid) {
+                // Kích hoạt tự chạy mặc định khi load xong
                 startAutoScroll();
+
+                // Người xem chạm tay vào: Ngắt lệnh tự động chạy ngay lập tức
                 timelineGrid.addEventListener('touchstart', () => {
                     isUserInteracting = true;
                     clearInterval(autoScrollTimeline); 
                     clearTimeout(scrollTimeout);       
-                    timelineGrid.style.scrollSnapType = 'x mandatory'; 
+                    timelineGrid.style.scrollSnapType = 'x mandatory'; // Trả lại hiệu ứng snap để người dùng vuốt tự do
                 }, { passive: true });
 
+                // Người xem nhấc ngón tay ra khỏi màn hình
                 timelineGrid.addEventListener('touchend', () => {
                     isUserInteracting = false;
                     clearTimeout(scrollTimeout);
+                    // Thiết lập bộ đếm ngược 5 giây (5000ms) để tự động trôi tiếp
                     scrollTimeout = setTimeout(startAutoScroll, 5000); 
                 }, { passive: true });
 
+                // Bộ lọc chống nhiễu cuộn quán tính (Momentum) và chống tự hủy lệnh chạy
                 timelineGrid.addEventListener('scroll', () => {
                     if (isUserInteracting) return; 
+                    
+                    // Nếu sự kiện cuộn được tạo ra từ chính hàm tự trôi hệ thống thì bỏ qua không xử lý
+                    if (isAutoScrolling) {
+                        isAutoScrolling = false; 
+                        return;
+                    }
+                    
+                    // Nếu cuộn do lực quán tính sau khi nhấc tay, liên tục làm mới bộ đếm 5 giây cho đến khi dừng hẳn
                     clearInterval(autoScrollTimeline);
                     clearTimeout(scrollTimeout);
                     scrollTimeout = setTimeout(startAutoScroll, 5000);
                 }, { passive: true });
             }
 
-            // 4. HIỆU ỨNG VẼ ANIMATION
+
+            // 3. HIỆU ỨNG VẼ ANIMATION KHI SECTION TIMELINE VÀO KHU VỰC NHÌN
             const observerAnimate = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -360,7 +376,8 @@
             }, { threshold: 0.2 });
             document.querySelectorAll('.animate-element').forEach(el => observerAnimate.observe(el));
 
-            // 5. LOGIC 360 VIEWER
+
+            // 4. LOGIC TRÌNH XOAY ẢNH 3D MÔ PHỎNG KHÔNG GIAN TRIỂN LÃM (360 VIEWER CHẬM CHUẨN)
             const totalFrames = 8;
             let currentFrame = 1;
             let isDragging = false;
@@ -371,7 +388,6 @@
             const rotateWrapper = document.getElementById('rotate-360-wrapper');
 
             if (rotateWrapper && image360) {
-                // Tải trước ngầm các hình 3D để xoay mượt, không làm chậm quá trình load web ban đầu
                 const preloadedImages = [];
                 setTimeout(() => {
                     for (let i = 1; i <= totalFrames; i++) {
@@ -390,36 +406,39 @@
                         if (currentFrame > totalFrames) currentFrame = 1;
                         if (currentFrame < 1) currentFrame = totalFrames;
 
-                        // Nếu mảng preload đã sẵn sàng thì dùng, không thì gọi trực tiếp
                         image360.src = preloadedImages.length ? preloadedImages[currentFrame - 1].src : `image/${currentFrame}.png`;
                         startX = currentX; 
                     }
                 }
 
-                // Mouse Event
+                // Thao tác kéo chuột trên Máy tính (PC)
                 rotateWrapper.addEventListener('mousedown', (e) => {
                     isDragging = true;
                     startX = e.clientX;
                     rotateWrapper.style.cursor = 'grabbing';
                     e.preventDefault(); 
                 });
+
                 window.addEventListener('mouseup', () => {
                     isDragging = false;
                     rotateWrapper.style.cursor = 'grab';
                 });
+
                 window.addEventListener('mousemove', (e) => {
                     if (!isDragging) return;
                     updateFrame(e.clientX);
                 });
 
-                // Touch Event
+                // Thao tác vuốt chạm trên Điện thoại (Mobile)
                 rotateWrapper.addEventListener('touchstart', (e) => {
                     isDragging = true;
                     startX = e.touches[0].clientX;
                 }, {passive: true});
+
                 window.addEventListener('touchend', () => {
                     isDragging = false;
                 });
+
                 rotateWrapper.addEventListener('touchmove', (e) => {
                     if (!isDragging) return;
                     if (e.cancelable) e.preventDefault(); 
