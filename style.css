@@ -121,17 +121,45 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 4: LOCAL VIDEO */
-.container-video { max-width: 1250px; width: 100%; margin: 0 auto; }
-.local-video-player {
-    width: 100%;
-    height: auto;
-    max-height: 75vh; 
-    display: block;
-    border-radius: 16px; 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); 
+/* =========================================
+   SECTION 4: YOUTUBE VIDEO (ĐÃ TỐI ƯU)
+   ========================================= */
+.container-video { 
+    max-width: 1100px; /* Độ rộng an toàn để video không bị vỡ hạt */
+    width: 100%; 
+    margin: 0 auto; 
+}
+
+/* Hộp chứa video: Ép tỷ lệ 16:9 chuẩn xác */
+.video-container-box { 
+    position: relative; 
+    width: 100%; 
+    padding-top: 56.25%; /* Công thức chuẩn tạo tỷ lệ 16:9 */
     background-color: var(--color-box-placeholder); 
-    outline: none;
+    border-radius: 16px; /* Bo góc mượt mà */
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Bóng đổ cho khung */
+}
+
+/* iFrame bên trong được kéo giãn vừa khít hộp chứa */
+.video-iframe { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 2; 
+    border: none;
+}
+
+/* Tối ưu Mobile */
+@media (max-width: 992px) {
+    .container-video { 
+        padding: 0 15px; 
+    }
+    .video-container-box { 
+        border-radius: 8px; /* Giảm độ bo góc trên điện thoại */
+    }
 }
 
 /* SECTION 5: CÁC LOẠI NÓN */
