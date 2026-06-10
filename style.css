@@ -162,7 +162,7 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .gallery-list { padding-left: 15px; }
 
 /* =========================================
-   SECTION 9: TRẢI NGHIỆM 3D (CHUẨN DESIGN)
+   SECTION 9: TRẢI NGHIỆM 3D (CẬP NHẬT THEO LAYOUT MỚI)
    ========================================= */
 .section-3d-layout {
     display: flex;
@@ -171,7 +171,7 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
     justify-content: space-between;
     height: 100vh;
     width: 100%;
-    padding: 0 5% 0 10%; 
+    padding: 0 5% 0 8%; /* Căn lề 2 bên */
 }
 
 .section-3d-layout .split-left-area {
@@ -182,9 +182,10 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
     text-align: center;
 }
 
+/* 1. TĂNG KÍCH THƯỚC TITLE4.SVG */
 .svg-title-large {
     width: 100%;
-    max-width: 350px; 
+    max-width: 480px; /* Đã tăng từ 350px lên 480px để to rõ hơn */
     margin-bottom: 25px;
 }
 
@@ -211,16 +212,16 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .view-360-container {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    max-width: 1100px; /* Mở rộng giới hạn container */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-/* Hộp màu bo tròn nền 3D */
+/* 2. TĂNG KÍCH THƯỚC FRAME 3D (HỘP BEIGE) */
 .interactive-3d-wrapper {
     position: relative;
-    width: 80%; 
+    width: 95%; /* Tăng từ 80% lên 95% độ phủ */
     background-color: #E8E3DC; 
     border-radius: 24px;
     overflow: hidden;
@@ -237,39 +238,46 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
     height: auto;
     object-fit: contain;
     display: block;
-    pointer-events: none;
+    pointer-events: none; /* Khóa bắt chuột để ko lỗi khi lướt */
 }
 
-/* Icon chuột (Con lắc) */
-.drag-icon-wrapper {
-    width: 45px;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-}
-
+/* 3. ĐƯA ICON VÀO TRONG, ĐỔI HIỆU ỨNG LẮC TỪ ĐỈNH */
 .drag-icon {
-    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 38px;
     height: auto;
-    opacity: 0.7;
-    transform-origin: top center; /* Điểm tựa con lắc ở trên đỉnh icon */
+    opacity: 0.6;
+    pointer-events: none; /* Để người dùng vung chuột trúng icon vẫn xoay được 3D */
+    z-index: 10;
+    /* Dời điểm tựa con lắc xuống dưới cùng (Bottom Center) */
+    transform-origin: bottom center; 
+}
+
+.drag-icon-left {
+    left: 40px; /* Cách mép trái của khối 3D */
+}
+
+.drag-icon-right {
+    right: 40px; /* Cách mép phải của khối 3D */
 }
 
 .pendulum-left {
-    animation: swingLeft 1.5s infinite ease-in-out alternate;
+    animation: swingInvertedLeft 1.5s infinite ease-in-out alternate;
 }
 .pendulum-right {
-    animation: swingRight 1.5s infinite ease-in-out alternate;
+    animation: swingInvertedRight 1.5s infinite ease-in-out alternate;
 }
 
-@keyframes swingLeft {
-    0% { transform: rotate(-20deg); }
-    100% { transform: rotate(20deg); }
+/* Keyframes lắc theo trục Y (-50%) để giữ nguyên vị trí giữa dọc */
+@keyframes swingInvertedLeft {
+    0% { transform: translateY(-50%) rotate(-15deg); }
+    100% { transform: translateY(-50%) rotate(15deg); }
 }
-@keyframes swingRight {
-    0% { transform: scaleX(-1) rotate(-20deg); }
-    100% { transform: scaleX(-1) rotate(20deg); }
+@keyframes swingInvertedRight {
+    /* Trái ngược hoàn toàn cho icon bên phải */
+    0% { transform: translateY(-50%) scaleX(-1) rotate(-15deg); }
+    100% { transform: translateY(-50%) scaleX(-1) rotate(15deg); }
 }
 
 /* SECTION 10: FOOTER */
