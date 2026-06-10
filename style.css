@@ -32,8 +32,7 @@ img { max-width: 100%; height: auto; display: block; }
 .margin-top-20 { margin-top: 20px; } .margin-bottom-20 { margin-bottom: 20px; }
 .margin-top-40 { margin-top: 40px; } .margin-bottom-40 { margin-bottom: 40px; }
 
-/* Ảnh tự do, không xén, không nền dư */
-.image-free-scale { width: 100%; height: auto; display: block; }
+.image-fluid-natural { width: 100%; height: auto; display: block; border-radius: 8px; }
 .border-radius-8 { border-radius: 8px; }
 .filter-white { filter: brightness(0) invert(1); }
 
@@ -73,27 +72,20 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes fadeInLogo { 100% { opacity: 1; transform: scale(1); } }
 body.preloader-finish #preloader-screen { opacity: 0; visibility: hidden; }
 
-/* =========================================
-   HEADER LOGO ĐA NĂNG
-   ========================================= */
+/* HEADER LOGO */
 .top-navigation { position: fixed; top: 30px; left: 50px; z-index: 9998; width: 100%; pointer-events: none; }
 .nav-logos-group { display: flex; align-items: center; }
-
-/* Logo nhỏ ẩn theo chiều rộng để tạo hiệu ứng trượt */
 .nav-logo-small { height: 60px; max-width: 0; margin-right: 0; opacity: 0; transition: max-width 0.4s ease, opacity 0.4s ease, margin-right 0.4s ease; display: block; overflow: hidden; pointer-events: auto;}
 .nav-school-info { display: flex; align-items: center; transition: transform 0.4s ease; transform: translateX(0); pointer-events: auto;}
 .nav-logo-school { height: 45px; margin-right: 15px; }
 .nav-school-text { font-size: 0.7rem; font-weight: 700; line-height: 1.4; border-left: 1.5px solid var(--color-text-brown); padding-left: 15px; }
-
-/* Trạng thái cuộn: Logo nhỏ hiện ra, MTCN dịch phải */
 body.is-scrolled .nav-logo-small { max-width: 120px; margin-right: 15px; opacity: 1; }
 body.is-scrolled .nav-school-info { transform: translateX(10px); }
 
 /* SECTION 1: HERO */
 .section-hero { align-items: center; padding-top: 80px; }
 .hero-main-logo { height: 320px; margin: 0 auto 30px; transition: opacity 0.3s ease; opacity: 1; }
-body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn logo to khi cuộn */
-
+body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} 
 .hero-subtitle { font-size: 1.5rem; letter-spacing: 8px; font-weight: 700; margin-bottom: 50px; }
 .hero-description { font-size: 1.1rem; letter-spacing: 3px; line-height: 1.6; }
 
@@ -129,42 +121,27 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* ============================================================
-   SECTION 4: LOCAL VIDEO PLAYER (ĐÃ TĂNG SIZE KHUNG HÌNH)
-   ============================================================ */
-
+/* SECTION 4: LOCAL VIDEO (AY BẰNG THẺ VIDEO MỚI NHẤT) */
 .container-video { 
-    max-width: 1250px; /* TĂNG SIZE: Mở rộng độ rộng từ 1000px lên 1250px để hiển thị to, rộng rãi hơn */
+    max-width: 1250px; 
     width: 100%;
     margin: 0 auto;
 }
-
 .local-video-player {
     width: 100%;
     height: auto;
-    max-height: 75vh; /* Giới hạn chiều cao tối đa bằng 75% màn hình để tránh bị tràn nút điều khiển trên PC */
+    max-height: 75vh; 
     display: block;
-    border-radius: 16px; /* Bo tròn góc mượt mà, đồng bộ với phong cách thiết kế mảng khối */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Bóng đổ mềm tạo chiều sâu khối nội thất */
-    background-color: var(--color-box-placeholder); /* Nền màu beige chờ sẵn trong lúc video đang tải ngầm */
+    border-radius: 16px; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); 
+    background-color: var(--color-box-placeholder); 
     outline: none;
 }
 
-/* Tối ưu khoảng cách hiển thị mượt mà trên giao diện Mobile */
-@media (max-width: 992px) {
-    .container-video {
-        padding: 0 15px; /* Thu hẹp lề để video chiếm tối đa không gian màn hình điện thoại */
-    }
-    .local-video-player {
-        border-radius: 8px; /* Giảm độ bo góc một chút trên màn hình nhỏ để cân đối thị giác */
-    }
-}
-
+/* SECTION 5: CÁC LOẠI NÓN */
 .section-5-title-wrapper { margin-bottom: 60px; }
 .hat-types-grid-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; }
 .hat-card { display: flex; gap: 20px; align-items: center; }
-
-/* HOÀN TOÀN XÓA BACKGROUND, ĐỂ ẢNH TỰ CO GIÃN ĐÚNG TỶ LỆ TRÊN MỌI MÀN HÌNH */
 .hat-image-wrapper { flex: 0 0 40%; background: transparent; }
 .hat-text-wrapper { flex: 0 0 60%; font-size: 0.85rem; line-height: 1.5; }
 
@@ -172,19 +149,13 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .section-split-layout { display: flex; flex-direction: row; height: 100vh; width: 100%; padding-top: 0; }
 .split-left-area { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; z-index: 3; }
 .split-content-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
-
 .split-right-area { position: relative; width: 50%; height: 100vh; background-color: transparent; overflow: hidden;}
 .split-standard-image { width: 100%; height: 100%; object-fit: cover; object-position: center center; position: absolute; top: 0; left: 0; z-index: 1;}
 .gradient-fade-mask { position: absolute; top: 0; left: 0; width: 35%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
 .material-image-box { width: 100%; height: auto; border-radius: 8px; overflow: hidden; background: transparent; }
 
 /* SECTION 8: GALLERY MỚI CHUẨN DESIGN */
-.gallery-master-grid { 
-    display: grid; 
-    grid-template-columns: 3fr 2.2fr 1.8fr 1.8fr; 
-    gap: 25px; 
-    align-items: center; 
-}
+.gallery-master-grid { display: grid; grid-template-columns: 3fr 2.2fr 1.8fr 1.8fr; gap: 25px; align-items: center; }
 .gallery-img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
 .item-image-large { grid-column: 1 / 2; grid-row: 1 / 2; height: 240px; }
 .item-text-top { grid-column: 2 / 3; grid-row: 1 / 2; font-size: 0.85rem; line-height: 1.6; padding: 0 10px; }
@@ -194,7 +165,73 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .item-text-bottom { grid-column: 4 / 5; grid-row: 2 / 3; font-size: 0.85rem; line-height: 1.6; padding-left: 10px; }
 .gallery-list { padding-left: 15px; }
 
-/* SECTION 10: FOOTER VỚI BACKGROUND ẢNH */
+/* =========================================
+   SECTION 9: TRẢI NGHIỆM 3D (ĐÃ FIX LAYOUT)
+   ========================================= */
+/* Setup riêng cho section 9 không ảnh hưởng các layout split khác */
+.section-split-layout:nth-of-type(9) {
+    justify-content: space-between;
+    padding: 0 50px;
+    gap: 30px;
+}
+
+/* Tiêu đề & Hướng dẫn */
+.svg-title-large {
+    width: 100%;
+    max-width: 350px; 
+    margin-bottom: 20px;
+}
+.instruction-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text-brown);
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 20px auto 0 auto;
+}
+
+/* Khung chứa ảnh 3D - Đã giới hạn kích thước an toàn */
+.interactive-3d-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px; 
+    height: auto;
+    max-height: 65vh; 
+    background-color: transparent; 
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.interactive-3d-wrapper:active { cursor: grabbing; }
+
+.image-3d-viewer {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+/* Icon con chuột - ĐÃ FIX KÍCH THƯỚC */
+.drag-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px !important; 
+    height: auto !important;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 10;
+}
+.drag-icon-left { left: 20px; }
+.drag-icon-right { right: 20px; transform: translateY(-50%) scaleX(-1); }
+
+/* SECTION 10: FOOTER */
 .site-footer { 
     background-image: url('image/back2.png');
     background-size: cover;
@@ -218,83 +255,9 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .animate-element.start-animation .step-anim:nth-child(4) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
 .animate-element.start-animation .step-anim:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
 
-/* =========================================
-   SECTION 9: TRẢI NGHIỆM 3D (CẬP NHẬT MỚI)
-   ========================================= */
-
-/* Tiêu đề SVG mới */
-.svg-title-large {
-    width: 100%;
-    max-width: 400px; /* Tăng kích thước title */
-    margin-bottom: 25px;
-    display: block;
-}
-
-/* Hướng dẫn font Manrope */
-.instruction-text {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--color-text-brown);
-    text-align: center;
-    line-height: 1.6;
-    margin: 0 auto;
-    max-width: 350px;
-}
-
-/* Vùng chứa 3D Viewer */
-.view-360-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-}
-
-.interactive-3d-wrapper {
-    position: relative;
-    width: 95%;
-    max-width: 950px; /* Tăng kích thước ảnh */
-    background-color: transparent; 
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: grab;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none; 
-    -webkit-user-select: none;
-}
-
-.image-3d-viewer {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    pointer-events: none;
-}
-
-.drag-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: auto;
-    opacity: 0.7;
-    pointer-events: none;
-}
-.drag-icon-left { left: 20px; }
-.drag-icon-right { right: 20px; transform: translateY(-50%) scaleX(-1); }
-
-/* Tối ưu mobile cho Section 9 */
-@media (max-width: 992px) {
-    .svg-title-large { max-width: 280px; }
-    .instruction-text { font-size: 1rem; }
-    .view-360-container { width: 100%; padding: 0 10px; }
-    .drag-icon { width: 30px; }
-}
 
 /* ==========================================================================
-   TỐI ƯU MOBILE 100% ĐỘC LẬP - KHÔNG LỖI - KHÔNG XÉN ẢNH
+   TỐI ƯU MOBILE 100% (GIẤU THANH CUỘN DỌC - TRẢ LẠI ẢNH TỰ DO)
    ========================================================================== */
 @media (max-width: 992px) {
     /* Trả lại cuộn web truyền thống siêu mượt trên điện thoại */
@@ -304,11 +267,10 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
     .container { padding: 0 15px; }
     .padding-top-fix { padding-top: 10px; }
 
-    /* HEADER MOBILE: Gọn nhẹ */
+    /* HEADER MOBILE */
     .top-navigation { top: 15px; left: 15px; width: auto; }
     .nav-logos-group { display: flex; flex-direction: row; align-items: center; }
     
-    /* Logo nhỏ ẨN mặc định, HIỆN khi lướt */
     #nav-small-logo { height: 40px; max-width: 0; margin-right: 0; opacity: 0; }
     body.is-scrolled #nav-small-logo { max-width: 100px; margin-right: 10px; opacity: 1; }
     
@@ -316,7 +278,7 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
     .nav-logo-school { height: 35px; margin-right: 10px; }
     .nav-school-text { display: block; font-size: 0.6rem; padding-left: 10px; }
 
-    /* HERO MOBILE: Logo to HIỆN mặc định, ẨN khi lướt */
+    /* HERO MOBILE */
     .section-hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-bottom: 5vh; }
     .hero-main-logo { display: block; height: 160px; margin-bottom: 20px; transition: opacity 0.3s ease; opacity: 1; } 
     body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none; }
@@ -330,30 +292,56 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
     .process-right-column { margin-top: 10px; }
     .vertical-straight-line { left: 24px; } 
     
-    .timeline-nodes-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; gap: 20px; }
-    .timeline-node { min-width: 280px; scroll-snap-align: center; }
+    /* TIMELINE MOBILE (ĐÃ FIX LỖI THANH CUỘN & TỰ ĐỘNG LƯỚT CHẬM) */
+    .timeline-nodes-grid { 
+        display: flex; 
+        overflow-x: auto; 
+        overflow-y: hidden; /* Fix lỗi thanh cuộn dọc do tràn dòng */
+        scroll-snap-type: x mandatory; 
+        padding-bottom: 10px; 
+        gap: 20px; 
+        -ms-overflow-style: none; /* Ẩn scrollbar IE/Edge */
+        scrollbar-width: none; /* Ẩn scrollbar Firefox */
+    }
+    .timeline-nodes-grid::-webkit-scrollbar {
+        display: none; /* Tàng hình hoàn toàn scrollbar trên Chrome/Safari/iOS */
+    }
+    .timeline-node { 
+        min-width: 280px; 
+        scroll-snap-align: center; 
+        height: auto; /* Cố định cao */
+    }
     .timeline-horizontal-line { top: 32px; }
+
+    /* SECTION 4 (VIDEO BẰNG THẺ VIDEO LOCAL) */
+    .container-video { padding: 0 15px; }
+    .local-video-player { border-radius: 8px; }
     
-    /* LƯỚI NÓN: TRẢ TỰ DO CHO ẢNH BUNG 100% */
+    /* LƯỚI NÓN */
     .section-5-title-wrapper { margin-bottom: 30px; }
     .hat-types-grid-box { grid-template-columns: 1fr; gap: 30px; }
     .hat-card { flex-direction: column; gap: 15px; margin-bottom: 15px;}
     .hat-image-wrapper { width: 100%; height: auto; background: transparent; }
-    .image-fluid-natural { width: 100%; height: auto; object-fit: contain; } /* Không ép chiều cao */
+    .image-fluid-natural { width: 100%; height: auto; object-fit: contain; } 
     .hat-text-wrapper { padding: 0 5px; text-align: justify; }
 
-    /* SECTION 6 & 7: ẢNH HIỂN THỊ ĐỦ 100% GỐC */
+    /* SECTION 6 & 7 */
     .section-split-layout { flex-direction: column; padding-top: 50px; }
     .split-left-area { width: 100%; padding: 0 15px; margin-bottom: 20px; }
     .split-right-area { width: 100%; height: auto; background-color: transparent;}
     .split-standard-image { position: relative; width: 100%; height: auto; object-fit: contain; border-radius: 8px;} 
     .gradient-fade-mask { display: none; }
 
-    /* GALLERY 8: 1 CỘT, KHÔNG ÉP HEIGHT NHƯ MÁY TÍNH */
+    /* GALLERY 8 */
     .gallery-master-grid { display: flex; flex-direction: column; gap: 20px; }
     .item-image-large, .item-image-panorama, .item-image-small-1, .item-image-small-2 { width: 100%; height: auto; }
     .gallery-img { position: relative; width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
     .item-text-top, .item-text-bottom { padding: 0 5px; }
+
+    /* SECTION 9 3D MOBILE */
+    .section-split-layout:nth-of-type(9) { padding: 50px 20px; }
+    .interactive-3d-wrapper { width: 100%; max-width: 100%; border-radius: 16px; }
+    .drag-icon { width: 35px !important; }
     
     /* FOOTER */
     .site-footer { padding: 40px 0; }
