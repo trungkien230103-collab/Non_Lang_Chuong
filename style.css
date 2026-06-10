@@ -121,12 +121,8 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 4: LOCAL VIDEO (AY BẰNG THẺ VIDEO MỚI NHẤT) */
-.container-video { 
-    max-width: 1250px; 
-    width: 100%;
-    margin: 0 auto;
-}
+/* SECTION 4: LOCAL VIDEO */
+.container-video { max-width: 1250px; width: 100%; margin: 0 auto; }
 .local-video-player {
     width: 100%;
     height: auto;
@@ -145,7 +141,7 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .hat-image-wrapper { flex: 0 0 40%; background: transparent; }
 .hat-text-wrapper { flex: 0 0 60%; font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 6 & 7: ẢNH ĐỘC LẬP TỰ NHIÊN */
+/* SECTION 6 & 7 */
 .section-split-layout { display: flex; flex-direction: row; height: 100vh; width: 100%; padding-top: 0; }
 .split-left-area { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; z-index: 3; }
 .split-content-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
@@ -154,7 +150,7 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .gradient-fade-mask { position: absolute; top: 0; left: 0; width: 35%; height: 100%; background: linear-gradient(to right, var(--color-background-base) 0%, transparent 100%); z-index: 2; }
 .material-image-box { width: 100%; height: auto; border-radius: 8px; overflow: hidden; background: transparent; }
 
-/* SECTION 8: GALLERY MỚI CHUẨN DESIGN */
+/* SECTION 8: GALLERY */
 .gallery-master-grid { display: grid; grid-template-columns: 3fr 2.2fr 1.8fr 1.8fr; gap: 25px; align-items: center; }
 .gallery-img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
 .item-image-large { grid-column: 1 / 2; grid-row: 1 / 2; height: 240px; }
@@ -166,46 +162,73 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 .gallery-list { padding-left: 15px; }
 
 /* =========================================
-   SECTION 9: TRẢI NGHIỆM 3D (ĐÃ FIX LAYOUT)
+   SECTION 9: TRẢI NGHIỆM 3D (CHUẨN DESIGN)
    ========================================= */
-/* Setup riêng cho section 9 không ảnh hưởng các layout split khác */
-.section-split-layout:nth-of-type(9) {
+.section-3d-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 50px;
-    gap: 30px;
+    height: 100vh;
+    width: 100%;
+    padding: 0 5% 0 10%; 
 }
 
-/* Tiêu đề & Hướng dẫn */
+.section-3d-layout .split-left-area {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .svg-title-large {
     width: 100%;
     max-width: 350px; 
-    margin-bottom: 20px;
-}
-.instruction-text {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-text-brown);
-    line-height: 1.6;
-    max-width: 300px;
-    margin: 20px auto 0 auto;
+    margin-bottom: 25px;
 }
 
-/* Khung chứa ảnh 3D - Đã giới hạn kích thước an toàn */
-.interactive-3d-wrapper {
+.instruction-text-3d {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text-brown);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    max-width: 320px;
+}
+
+.section-3d-layout .split-right-area {
+    position: relative;
+    width: 65%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-360-container {
     position: relative;
     width: 100%;
-    max-width: 700px; 
-    height: auto;
-    max-height: 65vh; 
-    background-color: transparent; 
-    border-radius: 30px;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Hộp màu bo tròn nền 3D */
+.interactive-3d-wrapper {
+    position: relative;
+    width: 80%; 
+    background-color: #E8E3DC; 
+    border-radius: 24px;
     overflow: hidden;
     cursor: grab;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
 }
 .interactive-3d-wrapper:active { cursor: grabbing; }
 
@@ -217,19 +240,37 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
     pointer-events: none;
 }
 
-/* Icon con chuột - ĐÃ FIX KÍCH THƯỚC */
-.drag-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px !important; 
-    height: auto !important;
-    opacity: 0.6;
+/* Icon chuột (Con lắc) */
+.drag-icon-wrapper {
+    width: 45px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
     pointer-events: none;
-    z-index: 10;
 }
-.drag-icon-left { left: 20px; }
-.drag-icon-right { right: 20px; transform: translateY(-50%) scaleX(-1); }
+
+.drag-icon {
+    width: 100%;
+    height: auto;
+    opacity: 0.7;
+    transform-origin: top center; /* Điểm tựa con lắc ở trên đỉnh icon */
+}
+
+.pendulum-left {
+    animation: swingLeft 1.5s infinite ease-in-out alternate;
+}
+.pendulum-right {
+    animation: swingRight 1.5s infinite ease-in-out alternate;
+}
+
+@keyframes swingLeft {
+    0% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+}
+@keyframes swingRight {
+    0% { transform: scaleX(-1) rotate(-20deg); }
+    100% { transform: scaleX(-1) rotate(20deg); }
+}
 
 /* SECTION 10: FOOTER */
 .site-footer { 
@@ -257,10 +298,9 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
 
 
 /* ==========================================================================
-   TỐI ƯU MOBILE 100% (GIẤU THANH CUỘN DỌC - TRẢ LẠI ẢNH TỰ DO)
+   TỐI ƯU MOBILE 100%
    ========================================================================== */
 @media (max-width: 992px) {
-    /* Trả lại cuộn web truyền thống siêu mượt trên điện thoại */
     .snap-scroll-container { scroll-snap-type: none; overflow-y: auto; }
     .snap-section { height: auto; min-height: auto; padding: 60px 0; }
     
@@ -292,28 +332,21 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
     .process-right-column { margin-top: 10px; }
     .vertical-straight-line { left: 24px; } 
     
-    /* TIMELINE MOBILE (ĐÃ FIX LỖI THANH CUỘN & TỰ ĐỘNG LƯỚT CHẬM) */
     .timeline-nodes-grid { 
         display: flex; 
         overflow-x: auto; 
-        overflow-y: hidden; /* Fix lỗi thanh cuộn dọc do tràn dòng */
+        overflow-y: hidden; 
         scroll-snap-type: x mandatory; 
         padding-bottom: 10px; 
         gap: 20px; 
-        -ms-overflow-style: none; /* Ẩn scrollbar IE/Edge */
-        scrollbar-width: none; /* Ẩn scrollbar Firefox */
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
     }
-    .timeline-nodes-grid::-webkit-scrollbar {
-        display: none; /* Tàng hình hoàn toàn scrollbar trên Chrome/Safari/iOS */
-    }
-    .timeline-node { 
-        min-width: 280px; 
-        scroll-snap-align: center; 
-        height: auto; /* Cố định cao */
-    }
+    .timeline-nodes-grid::-webkit-scrollbar { display: none; }
+    .timeline-node { min-width: 280px; scroll-snap-align: center; height: auto; }
     .timeline-horizontal-line { top: 32px; }
 
-    /* SECTION 4 (VIDEO BẰNG THẺ VIDEO LOCAL) */
+    /* SECTION 4 VIDEO */
     .container-video { padding: 0 15px; }
     .local-video-player { border-radius: 8px; }
     
@@ -339,9 +372,12 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;}
     .item-text-top, .item-text-bottom { padding: 0 5px; }
 
     /* SECTION 9 3D MOBILE */
-    .section-split-layout:nth-of-type(9) { padding: 50px 20px; }
-    .interactive-3d-wrapper { width: 100%; max-width: 100%; border-radius: 16px; }
-    .drag-icon { width: 35px !important; }
+    .section-3d-layout { flex-direction: column; padding: 50px 20px; height: auto; }
+    .section-3d-layout .split-left-area { width: 100%; margin-bottom: 30px; }
+    .section-3d-layout .split-right-area { width: 100%; height: auto; }
+    .view-360-container { max-width: 100%; justify-content: space-between; }
+    .interactive-3d-wrapper { width: 75%; border-radius: 16px; }
+    .drag-icon-wrapper { width: 30px; }
     
     /* FOOTER */
     .site-footer { padding: 40px 0; }
