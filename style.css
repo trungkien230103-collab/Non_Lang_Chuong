@@ -129,11 +129,36 @@ body.is-scrolled .hero-main-logo { opacity: 0; pointer-events: none;} /* Ẩn lo
 .step-title { font-size: 1.1rem; margin-bottom: 5px; }
 .step-detail { font-size: 0.85rem; line-height: 1.5; }
 
-/* SECTION 4 & 5 */
-.container-video { max-width: 1000px; }
-.video-container-box { position: relative; width: 100%; padding-top: 56.25%; background: var(--color-box-placeholder); border-radius: 12px; overflow: hidden; }
-.video-iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
-.video-placeholder-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; z-index: 1; }
+/* ============================================================
+   SECTION 4: LOCAL VIDEO PLAYER (ĐÃ TĂNG SIZE KHUNG HÌNH)
+   ============================================================ */
+
+.container-video { 
+    max-width: 1250px; /* TĂNG SIZE: Mở rộng độ rộng từ 1000px lên 1250px để hiển thị to, rộng rãi hơn */
+    width: 100%;
+    margin: 0 auto;
+}
+
+.local-video-player {
+    width: 100%;
+    height: auto;
+    max-height: 75vh; /* Giới hạn chiều cao tối đa bằng 75% màn hình để tránh bị tràn nút điều khiển trên PC */
+    display: block;
+    border-radius: 16px; /* Bo tròn góc mượt mà, đồng bộ với phong cách thiết kế mảng khối */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Bóng đổ mềm tạo chiều sâu khối nội thất */
+    background-color: var(--color-box-placeholder); /* Nền màu beige chờ sẵn trong lúc video đang tải ngầm */
+    outline: none;
+}
+
+/* Tối ưu khoảng cách hiển thị mượt mà trên giao diện Mobile */
+@media (max-width: 992px) {
+    .container-video {
+        padding: 0 15px; /* Thu hẹp lề để video chiếm tối đa không gian màn hình điện thoại */
+    }
+    .local-video-player {
+        border-radius: 8px; /* Giảm độ bo góc một chút trên màn hình nhỏ để cân đối thị giác */
+    }
+}
 
 .section-5-title-wrapper { margin-bottom: 60px; }
 .hat-types-grid-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; }
